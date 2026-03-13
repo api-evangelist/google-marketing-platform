@@ -1,0 +1,57 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/api-evangelist/google-marketing-platform/refs/heads/main/json-schema/json-schema.yml
+title: Google Marketing Platform Admin API Schema
+description: >-
+  JSON Schema for the Google Marketing Platform Admin API covering
+  organizations, analytics account links, and service levels.
+type: object
+properties:
+  Organization:
+    type: object
+    properties:
+      name:
+        type: string
+        description: Resource name of the organization.
+      displayName:
+        type: string
+        description: The display name of the organization.
+    required:
+      - name
+  AnalyticsAccountLink:
+    type: object
+    properties:
+      name:
+        type: string
+        description: Resource name of the analytics account link.
+      analyticsAccount:
+        type: string
+        description: The Analytics account resource name.
+      displayName:
+        type: string
+        description: Display name of the Analytics account.
+      linkVerificationState:
+        type: string
+        description: The verification state of the link.
+        enum:
+          - LINK_VERIFICATION_STATE_UNSPECIFIED
+          - LINK_VERIFICATION_STATE_VERIFIED
+          - LINK_VERIFICATION_STATE_NOT_VERIFIED
+    required:
+      - name
+      - analyticsAccount
+  SetPropertyServiceLevelRequest:
+    type: object
+    properties:
+      analyticsProperty:
+        type: string
+        description: The Analytics property resource name.
+      serviceLevel:
+        type: string
+        description: The service level to set.
+        enum:
+          - ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
+          - ANALYTICS_SERVICE_LEVEL_STANDARD
+          - ANALYTICS_SERVICE_LEVEL_360
+    required:
+      - analyticsProperty
+      - serviceLevel

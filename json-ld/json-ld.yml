@@ -1,0 +1,12 @@
+"@context":
+  "@vocab": https://schema.org/
+  gmp: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest/
+  name: schema:name
+  description: schema:description
+  url: schema:url
+  displayName: gmp:displayName
+  analyticsAccount: gmp:analyticsAccount
+  analyticsProperty: gmp:analyticsProperty
+  serviceLevel: gmp:serviceLevel
+  linkVerificationState: gmp:linkVerificationState
+  organizationId: gmp:organizationId
