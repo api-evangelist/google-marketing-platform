@@ -1,3 +1,4 @@
+aid: google-marketing-platform
 name: Google Marketing Platform Admin API
 description: >-
   The Google Marketing Platform Admin API provides programmatic access to manage
@@ -7,8 +8,9 @@ description: >-
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-marketing-platform/refs/heads/main/apis.yml
 created: '2026-03-13'
-modified: '2026-03-13'
-specificationVersion: '0.18'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+type: Index
 tags:
   - Marketing
   - Analytics
@@ -24,17 +26,37 @@ apis:
     humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
     baseURL: https://marketingplatformadmin.googleapis.com
     properties:
+      - type: Documentation
+        url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
       - type: OpenAPI
         url: openapi/openapi.yml
+      - type: Authentication
+        url: https://developers.google.com/docs/api/how-tos/authorizing
+      - type: Getting Started
+        url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
       - type: JSONSchema
         url: json-schema/json-schema.yml
       - type: JSONLD
         url: json-ld/json-ld.yml
 common:
-  - type: GettingStarted
+  - type: Portal
+    url: https://marketingplatform.google.com
+  - type: Getting Started
     url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  - type: Documentation
+    url: https://developers.google.com/marketing-platform
+  - type: Authentication
+    url: https://developers.google.com/docs/api/how-tos/authorizing
   - type: Pricing
     url: https://marketingplatform.google.com/about/
+  - type: Terms of Service
+    url: https://developers.google.com/terms
+  - type: Privacy Policy
+    url: https://policies.google.com/privacy
+  - type: Status
+    url: https://status.cloud.google.com/
+  - type: Support
+    url: https://developers.google.com/marketing-platform/support
   - type: JSONLD
     url: json-ld/json-ld.yml
 maintainers:
