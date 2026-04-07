@@ -37,6 +37,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListOrganizationsResponse'
+      tags:
+        - V1alpha
   /v1alpha/{parent}/analyticsAccountLinks:
     get:
       summary: Google Marketing Platform Admin List analytics account links
@@ -63,6 +65,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListAnalyticsAccountLinksResponse'
+      tags:
+        - V1alpha
     post:
       summary: Google Marketing Platform Admin Create analytics account link
       description: Creates an analytics account link for the specified organization.
@@ -85,6 +89,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AnalyticsAccountLink'
+      tags:
+        - V1alpha
   /v1alpha/{name}:
     delete:
       summary: Google Marketing Platform Admin Delete analytics account link
@@ -99,6 +105,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - V1alpha
   /v1alpha/{analyticsAccountLink}:setPropertyServiceLevel:
     post:
       summary: Google Marketing Platform Admin Set property service level
@@ -122,6 +130,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetPropertyServiceLevelResponse'
+      tags:
+        - V1alpha
 components:
   schemas:
     Organization:
@@ -196,3 +206,5 @@ components:
 security:
   - oauth2:
       - https://www.googleapis.com/auth/marketingplatformadmin.analytics.update
+tags:
+  - name: V1alpha
