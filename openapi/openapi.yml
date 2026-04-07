@@ -18,7 +18,7 @@ servers:
 paths:
   /v1alpha/organizations:
     get:
-      summary: List organizations
+      summary: Google Marketing Platform Admin List organizations
       description: Lists the Google Marketing Platform organizations accessible by the caller.
       operationId: listOrganizations
       parameters:
@@ -39,7 +39,7 @@ paths:
                 $ref: '#/components/schemas/ListOrganizationsResponse'
   /v1alpha/{parent}/analyticsAccountLinks:
     get:
-      summary: List analytics account links
+      summary: Google Marketing Platform Admin List analytics account links
       description: Lists analytics account links for the specified organization.
       operationId: listAnalyticsAccountLinks
       parameters:
@@ -64,7 +64,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListAnalyticsAccountLinksResponse'
     post:
-      summary: Create analytics account link
+      summary: Google Marketing Platform Admin Create analytics account link
       description: Creates an analytics account link for the specified organization.
       operationId: createAnalyticsAccountLink
       parameters:
@@ -87,7 +87,7 @@ paths:
                 $ref: '#/components/schemas/AnalyticsAccountLink'
   /v1alpha/{name}:
     delete:
-      summary: Delete analytics account link
+      summary: Google Marketing Platform Admin Delete analytics account link
       description: Deletes an analytics account link.
       operationId: deleteAnalyticsAccountLink
       parameters:
@@ -101,7 +101,7 @@ paths:
           description: Successful response
   /v1alpha/{analyticsAccountLink}:setPropertyServiceLevel:
     post:
-      summary: Set property service level
+      summary: Google Marketing Platform Admin Set property service level
       description: Sets the service level for an Analytics property.
       operationId: setPropertyServiceLevel
       parameters:
