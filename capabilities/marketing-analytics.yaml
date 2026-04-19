@@ -1,0 +1,133 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Marketing Platform Analytics Administration"
+  description: "Unified workflow for managing Google Marketing Platform organizations and their Analytics account integrations including service level configuration. Used by marketing platform administrators and analytics managers."
+  tags:
+    - Google Marketing Platform
+    - Analytics
+    - Platform Administration
+    - Organization Management
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      GMP_ACCESS_TOKEN: GMP_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: gmp-admin
+      location: ./shared/admin-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: gmp-analytics-admin-api
+      description: "Unified REST API for Google Marketing Platform analytics administration."
+      resources:
+        - path: /v1/organizations
+          name: organizations
+          description: "Organization management."
+          operations:
+            - method: GET
+              name: list-organizations
+              description: "List Marketing Platform organizations."
+              call: "gmp-admin.list-organizations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/organizations/{id}/analytics-links
+          name: analytics-links
+          description: "Analytics account link management."
+          operations:
+            - method: GET
+              name: list-analytics-links
+              description: "List analytics account links."
+              call: "gmp-admin.list-analytics-links"
+              with:
+                parent: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-analytics-link
+              description: "Create an analytics account link."
+              call: "gmp-admin.create-analytics-link"
+              with:
+                parent: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/analytics-links/{id}
+          name: analytics-link-details
+          description: "Individual analytics link management."
+          operations:
+            - method: DELETE
+              name: delete-analytics-link
+              description: "Delete an analytics account link."
+              call: "gmp-admin.delete-analytics-link"
+              with:
+                name: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: gmp-analytics-admin-mcp
+      transport: http
+      description: "MCP server for AI-assisted Google Marketing Platform analytics administration."
+      tools:
+        - name: list-organizations
+          description: "List Google Marketing Platform organizations."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gmp-admin.list-organizations"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-analytics-links
+          description: "List analytics account links for an organization."
+          hints:
+            readOnly: true
+          call: "gmp-admin.list-analytics-links"
+          with:
+            parent: "tools.organizationId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-analytics-link
+          description: "Create an analytics account link."
+          hints:
+            readOnly: false
+          call: "gmp-admin.create-analytics-link"
+          with:
+            parent: "tools.organizationId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-analytics-link
+          description: "Delete an analytics account link."
+          hints:
+            destructive: true
+            idempotent: true
+          call: "gmp-admin.delete-analytics-link"
+          with:
+            name: "tools.linkName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: set-property-service-level
+          description: "Set Analytics property service level (Standard or 360)."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "gmp-admin.set-property-service-level"
+          with:
+            analyticsAccountLink: "tools.analyticsAccountLink"
+          outputParameters:
+            - type: object
+              mapping: "$."

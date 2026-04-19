@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListOrganizationsResponse",
+  "type": "object",
+  "properties": {
+    "organizations": {
+      "type": "array"
+    },
+    "nextPageToken": {
+      "type": "string"
+    }
+  }
+}

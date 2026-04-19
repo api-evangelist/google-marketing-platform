@@ -1,0 +1,8 @@
+name: google-marketing-platform API Vocabulary
+provider: google-marketing-platform
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 5
+schemas: 6
+tags:
+- V1alpha

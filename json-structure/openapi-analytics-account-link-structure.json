@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "AnalyticsAccountLink",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "analyticsAccount": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "linkVerificationState": {
+      "type": "string"
+    }
+  }
+}

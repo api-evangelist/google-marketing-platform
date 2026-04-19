@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AnalyticsAccountLink",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Resource name of the link."
+    },
+    "analyticsAccount": {
+      "type": "string",
+      "description": "The Analytics account resource name."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the Analytics account."
+    },
+    "linkVerificationState": {
+      "type": "string"
+    }
+  }
+}

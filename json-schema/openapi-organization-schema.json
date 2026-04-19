@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Organization",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Resource name of the organization."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the organization."
+    }
+  }
+}

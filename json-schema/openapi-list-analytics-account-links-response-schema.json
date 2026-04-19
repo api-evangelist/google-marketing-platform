@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ListAnalyticsAccountLinksResponse",
+  "type": "object",
+  "properties": {
+    "analyticsAccountLinks": {
+      "type": "array"
+    },
+    "nextPageToken": {
+      "type": "string"
+    }
+  }
+}

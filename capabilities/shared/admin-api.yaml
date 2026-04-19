@@ -1,0 +1,169 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Marketing Platform Admin API"
+  description: "Google Marketing Platform Admin API for managing organizations, analytics account links, and service levels."
+  tags:
+    - Google Marketing Platform
+    - Analytics
+    - Organization Management
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      GMP_ACCESS_TOKEN: GMP_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: gmp-admin
+      baseUri: https://marketingplatformadmin.googleapis.com
+      description: "Google Marketing Platform Admin API for organization and analytics management."
+      authentication:
+        type: bearer
+        token: "{{GMP_ACCESS_TOKEN}}"
+      resources:
+        - name: organizations
+          path: /v1alpha/organizations
+          description: "Organization management."
+          operations:
+            - name: list-organizations
+              method: GET
+              description: "List Marketing Platform organizations."
+              inputParameters:
+                - name: pageSize
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page size."
+                - name: pageToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "Page token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: analytics-account-links
+          path: /v1alpha/{parent}/analyticsAccountLinks
+          description: "Analytics account link management."
+          operations:
+            - name: list-analytics-links
+              method: GET
+              description: "List analytics account links."
+              inputParameters:
+                - name: parent
+                  in: path
+                  type: string
+                  required: true
+                  description: "Organization resource name."
+                - name: pageSize
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page size."
+                - name: pageToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "Page token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-analytics-link
+              method: POST
+              description: "Create an analytics account link."
+              inputParameters:
+                - name: parent
+                  in: path
+                  type: string
+                  required: true
+                  description: "Organization resource name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  analyticsAccount: "{{tools.analyticsAccount}}"
+        - name: analytics-link-details
+          path: /v1alpha/{name}
+          description: "Individual analytics account link."
+          operations:
+            - name: delete-analytics-link
+              method: DELETE
+              description: "Delete an analytics account link."
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+                  description: "Link resource name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: service-level
+          path: /v1alpha/{analyticsAccountLink}:setPropertyServiceLevel
+          description: "Service level management."
+          operations:
+            - name: set-property-service-level
+              method: POST
+              description: "Set the service level for an Analytics property."
+              inputParameters:
+                - name: analyticsAccountLink
+                  in: path
+                  type: string
+                  required: true
+                  description: "Analytics account link resource name."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  analyticsProperty: "{{tools.analyticsProperty}}"
+                  serviceLevel: "{{tools.serviceLevel}}"
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: gmp-admin-rest-api
+      resources:
+        - path: /v1/organizations
+          name: organizations
+          description: "Organization management."
+          operations:
+            - method: GET
+              name: list-organizations
+              description: "List organizations."
+              call: "gmp-admin.list-organizations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: gmp-admin-mcp
+      transport: http
+      tools:
+        - name: list-organizations
+          description: "List Marketing Platform organizations."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "gmp-admin.list-organizations"
+          outputParameters:
+            - type: object
+              mapping: "$."

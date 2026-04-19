@@ -13,23 +13,23 @@ info:
     name: Google APIs Terms of Service
     url: https://developers.google.com/terms
 servers:
-  - url: https://marketingplatformadmin.googleapis.com
-    description: Marketing Platform Admin API server
+- url: https://marketingplatformadmin.googleapis.com
+  description: Marketing Platform Admin API server
 paths:
   /v1alpha/organizations:
     get:
-      summary: Google Marketing Platform Admin List organizations
+      summary: Google Marketing Platform Admin List Organizations
       description: Lists the Google Marketing Platform organizations accessible by the caller.
       operationId: listOrganizations
       parameters:
-        - name: pageSize
-          in: query
-          schema:
-            type: integer
-        - name: pageToken
-          in: query
-          schema:
-            type: string
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -38,26 +38,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListOrganizationsResponse'
       tags:
-        - V1alpha
+      - V1alpha
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1alpha/{parent}/analyticsAccountLinks:
     get:
-      summary: Google Marketing Platform Admin List analytics account links
+      summary: Google Marketing Platform Admin List Analytics Account Links
       description: Lists analytics account links for the specified organization.
       operationId: listAnalyticsAccountLinks
       parameters:
-        - name: parent
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: pageSize
-          in: query
-          schema:
-            type: integer
-        - name: pageToken
-          in: query
-          schema:
-            type: string
+      - name: parent
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -66,17 +69,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListAnalyticsAccountLinksResponse'
       tags:
-        - V1alpha
+      - V1alpha
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
-      summary: Google Marketing Platform Admin Create analytics account link
+      summary: Google Marketing Platform Admin Create Analytics Account Link
       description: Creates an analytics account link for the specified organization.
       operationId: createAnalyticsAccountLink
       parameters:
-        - name: parent
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: parent
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -90,34 +96,40 @@ paths:
               schema:
                 $ref: '#/components/schemas/AnalyticsAccountLink'
       tags:
-        - V1alpha
+      - V1alpha
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1alpha/{name}:
     delete:
-      summary: Google Marketing Platform Admin Delete analytics account link
+      summary: Google Marketing Platform Admin Delete Analytics Account Link
       description: Deletes an analytics account link.
       operationId: deleteAnalyticsAccountLink
       parameters:
-        - name: name
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
       tags:
-        - V1alpha
+      - V1alpha
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /v1alpha/{analyticsAccountLink}:setPropertyServiceLevel:
     post:
-      summary: Google Marketing Platform Admin Set property service level
+      summary: Google Marketing Platform Admin Set Property Service Level
       description: Sets the service level for an Analytics property.
       operationId: setPropertyServiceLevel
       parameters:
-        - name: analyticsAccountLink
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: analyticsAccountLink
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -131,7 +143,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/SetPropertyServiceLevelResponse'
       tags:
-        - V1alpha
+      - V1alpha
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   schemas:
     Organization:
@@ -140,9 +155,11 @@ components:
         name:
           type: string
           description: Resource name of the organization.
+          example: Example Title
         displayName:
           type: string
           description: The display name of the organization.
+          example: example_value
     ListOrganizationsResponse:
       type: object
       properties:
@@ -150,26 +167,32 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Organization'
+          example: []
         nextPageToken:
           type: string
+          example: example_value
     AnalyticsAccountLink:
       type: object
       properties:
         name:
           type: string
           description: Resource name of the link.
+          example: Example Title
         analyticsAccount:
           type: string
           description: The Analytics account resource name.
+          example: example_value
         displayName:
           type: string
           description: The display name of the Analytics account.
+          example: example_value
         linkVerificationState:
           type: string
           enum:
-            - LINK_VERIFICATION_STATE_UNSPECIFIED
-            - LINK_VERIFICATION_STATE_VERIFIED
-            - LINK_VERIFICATION_STATE_NOT_VERIFIED
+          - LINK_VERIFICATION_STATE_UNSPECIFIED
+          - LINK_VERIFICATION_STATE_VERIFIED
+          - LINK_VERIFICATION_STATE_NOT_VERIFIED
+          example: LINK_VERIFICATION_STATE_UNSPECIFIED
     ListAnalyticsAccountLinksResponse:
       type: object
       properties:
@@ -177,20 +200,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AnalyticsAccountLink'
+          example: []
         nextPageToken:
           type: string
+          example: example_value
     SetPropertyServiceLevelRequest:
       type: object
       properties:
         analyticsProperty:
           type: string
           description: The Analytics property resource name.
+          example: example_value
         serviceLevel:
           type: string
           enum:
-            - ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
-            - ANALYTICS_SERVICE_LEVEL_STANDARD
-            - ANALYTICS_SERVICE_LEVEL_360
+          - ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
+          - ANALYTICS_SERVICE_LEVEL_STANDARD
+          - ANALYTICS_SERVICE_LEVEL_360
+          example: ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
     SetPropertyServiceLevelResponse:
       type: object
   securitySchemes:
@@ -204,7 +231,7 @@ components:
             https://www.googleapis.com/auth/marketingplatformadmin.analytics.read: View Analytics links
             https://www.googleapis.com/auth/marketingplatformadmin.analytics.update: Manage Analytics links
 security:
-  - oauth2:
-      - https://www.googleapis.com/auth/marketingplatformadmin.analytics.update
+- oauth2:
+  - https://www.googleapis.com/auth/marketingplatformadmin.analytics.update
 tags:
-  - name: V1alpha
+- name: V1alpha

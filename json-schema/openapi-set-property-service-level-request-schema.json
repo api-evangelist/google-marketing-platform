@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SetPropertyServiceLevelRequest",
+  "type": "object",
+  "properties": {
+    "analyticsProperty": {
+      "type": "string",
+      "description": "The Analytics property resource name."
+    },
+    "serviceLevel": {
+      "type": "string"
+    }
+  }
+}
