@@ -1,0 +1,805 @@
+"""
+Google Marketing Platform Admin API — GraphQL Schema
+Derived from the GMP Admin REST API surface covering organization management,
+Analytics account linking, Campaign Manager, Display & Video 360, and Search Ads 360.
+"""
+
+# ─────────────────────────────────────────────
+# Scalar types
+# ─────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+
+# ─────────────────────────────────────────────
+# Enum types
+# ─────────────────────────────────────────────
+
+"""Service level tiers available for Google Analytics properties."""
+enum ServiceLevel {
+  SERVICE_LEVEL_UNSPECIFIED
+  ANALYTICS_SERVICE_LEVEL_STANDARD
+  ANALYTICS_SERVICE_LEVEL_360
+}
+
+"""Status of a link between a GMP organization and a product account."""
+enum LinkStatus {
+  LINK_STATUS_UNSPECIFIED
+  ACTIVE
+  PENDING
+  SUSPENDED
+  DELETED
+}
+
+"""Type of GMP product being linked to an organization."""
+enum ProductType {
+  PRODUCT_TYPE_UNSPECIFIED
+  ANALYTICS
+  CAMPAIGN_MANAGER
+  DISPLAY_AND_VIDEO_360
+  SEARCH_ADS_360
+  OPTIMIZE
+  SURVEYS
+  TAG_MANAGER
+  DATASTUDIO
+}
+
+"""Access role for a user within a GMP organization or product."""
+enum UserRole {
+  ROLE_UNSPECIFIED
+  VIEWER
+  ANALYST
+  EDITOR
+  ADMIN
+  LIMITED_VIEWER
+}
+
+"""Type of access binding for a user."""
+enum AccessBindingType {
+  ACCESS_BINDING_TYPE_UNSPECIFIED
+  PREDEFINED
+  CUSTOM
+}
+
+"""Industry category for an Analytics property."""
+enum IndustryCategory {
+  INDUSTRY_CATEGORY_UNSPECIFIED
+  AUTOMOTIVE
+  BUSINESS_AND_INDUSTRIAL_MARKETS
+  FINANCE
+  HEALTHCARE
+  TECHNOLOGY
+  TRAVEL
+  OTHER
+  ARTS_AND_ENTERTAINMENT
+  BEAUTY_AND_FITNESS
+  BOOKS_AND_LITERATURE
+  FOOD_AND_DRINK
+  GAMES
+  HOBBIES_AND_LEISURE
+  HOME_AND_GARDEN
+  INTERNET_AND_TELECOM
+  LAW_AND_GOVERNMENT
+  NEWS
+  ONLINE_COMMUNITIES
+  PEOPLE_AND_SOCIETY
+  PETS_AND_ANIMALS
+  REAL_ESTATE
+  REFERENCE
+  SCIENCE
+  SPORTS
+  JOBS_AND_EDUCATION
+  SHOPPING
+}
+
+"""Currency codes supported by GMP products."""
+enum CurrencyCode {
+  USD
+  EUR
+  GBP
+  JPY
+  CAD
+  AUD
+  CHF
+  CNY
+  INR
+  BRL
+  MXN
+  KRW
+  SGD
+  HKD
+  NOK
+  SEK
+  DKK
+  NZD
+  ZAR
+  RUB
+}
+
+"""Type of Campaign Manager account."""
+enum CampaignManagerAccountType {
+  ACCOUNT_TYPE_UNSPECIFIED
+  ADVERTISER
+  AGENCY
+  NETWORK
+}
+
+"""Status of a Display & Video 360 partner or advertiser."""
+enum Dv360EntityStatus {
+  ENTITY_STATUS_UNSPECIFIED
+  ENTITY_STATUS_ACTIVE
+  ENTITY_STATUS_ARCHIVED
+  ENTITY_STATUS_DRAFT
+  ENTITY_STATUS_PAUSED
+}
+
+"""Sorting direction for list operations."""
+enum SortOrder {
+  ASC
+  DESC
+}
+
+# ─────────────────────────────────────────────
+# Core resource types
+# ─────────────────────────────────────────────
+
+"""A Google Marketing Platform organization."""
+type Organization {
+  name: String!
+  displayName: String!
+  analyticsAccountLinks: [AnalyticsAccountLink!]
+  productLinks: [ProductLink!]
+  userLinks: [UserLink!]
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A link between a GMP organization and a Google Analytics account."""
+type AnalyticsAccountLink {
+  name: String!
+  analyticsAccount: String!
+  displayName: String
+  linkVerificationState: LinkStatus!
+  serviceLevel: ServiceLevel!
+  organization: Organization
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A link between a GMP organization and a product account (CM360, DV360, SA360)."""
+type ProductLink {
+  name: String!
+  productType: ProductType!
+  status: LinkStatus!
+  organization: Organization
+  campaignManagerLink: CampaignManagerLink
+  displayVideo360Link: DisplayVideo360Link
+  searchAds360Link: SearchAds360Link
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""Link details for Campaign Manager 360."""
+type CampaignManagerLink {
+  name: String!
+  accountId: String!
+  displayName: String
+  accountType: CampaignManagerAccountType!
+  serviceEnabled: Boolean!
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""Link details for Display & Video 360."""
+type DisplayVideo360Link {
+  name: String!
+  advertiserId: String!
+  displayName: String
+  status: Dv360EntityStatus!
+  partnerId: String
+  partnerName: String
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""Link details for Search Ads 360."""
+type SearchAds360Link {
+  name: String!
+  advertiserId: String!
+  displayName: String
+  siteStatImportEnabled: Boolean
+  campaignDataImportEnabled: Boolean
+  costDataImportEnabled: Boolean
+  autoTaggingEnabled: Boolean
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A user linked to a GMP organization with specific permissions."""
+type UserLink {
+  name: String!
+  email: String!
+  directRoles: [UserRole!]!
+  effectiveRoles: [UserRole!]!
+  organization: Organization
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""An access binding granting a user roles on a specific GMP resource."""
+type AccessBinding {
+  name: String!
+  user: String!
+  roles: [String!]!
+  bindingType: AccessBindingType!
+  resource: String!
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A Google Analytics property linked to an organization."""
+type AnalyticsProperty {
+  name: String!
+  displayName: String!
+  industryCategory: IndustryCategory
+  currencyCode: CurrencyCode
+  timeZone: String
+  serviceLevel: ServiceLevel
+  parentAccount: AnalyticsAccount
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A Google Analytics account (container for properties)."""
+type AnalyticsAccount {
+  name: String!
+  displayName: String!
+  regionCode: String
+  properties: [AnalyticsProperty!]
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A Campaign Manager 360 account."""
+type CampaignManagerAccount {
+  id: String!
+  name: String!
+  accountType: CampaignManagerAccountType!
+  countryId: String
+  currencyId: String
+  description: String
+  status: LinkStatus
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A Display & Video 360 partner entity."""
+type DisplayVideo360Partner {
+  partnerId: String!
+  displayName: String!
+  status: Dv360EntityStatus!
+  currencyCode: CurrencyCode
+  timeZone: String
+  dataAccessConfig: DataAccessConfig
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A Display & Video 360 advertiser entity."""
+type DisplayVideo360Advertiser {
+  advertiserId: String!
+  displayName: String!
+  status: Dv360EntityStatus!
+  partner: DisplayVideo360Partner
+  currencyCode: CurrencyCode
+  timeZone: String
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A Search Ads 360 advertiser."""
+type SearchAds360Advertiser {
+  advertiserId: String!
+  displayName: String!
+  status: LinkStatus
+  engineAccountType: String
+  currencyCode: CurrencyCode
+  timeZone: String
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""Data access configuration for DV360."""
+type DataAccessConfig {
+  sdfConfig: SdfConfig
+}
+
+"""Structured Data Files configuration for DV360."""
+type SdfConfig {
+  sdfApiVersion: String!
+  adminEmail: String
+}
+
+"""An audit log entry for GMP admin actions."""
+type AuditLogEntry {
+  name: String!
+  action: String!
+  resourceName: String!
+  actor: String!
+  timestamp: DateTime!
+  details: JSON
+}
+
+"""A GMP integration configuration between products."""
+type IntegrationConfig {
+  name: String!
+  productType: ProductType!
+  enabled: Boolean!
+  settings: JSON
+  organization: Organization
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A property access report summarizing who can access what."""
+type PropertyAccessReport {
+  propertyName: String!
+  rows: [PropertyAccessReportRow!]!
+  rowCount: Int!
+  quotaConsumed: Int
+}
+
+"""A single row in a property access report."""
+type PropertyAccessReportRow {
+  userEmail: String!
+  accessTimestamp: DateTime
+  dimensionValues: [DimensionValue!]!
+  metricValues: [MetricValue!]!
+}
+
+"""A dimension value in a report row."""
+type DimensionValue {
+  dimensionName: String!
+  value: String!
+}
+
+"""A metric value in a report row."""
+type MetricValue {
+  metricName: String!
+  value: String!
+}
+
+"""Quota usage for GMP API calls."""
+type QuotaStatus {
+  concurrentRequests: Int!
+  serverErrorsPerProjectPerHour: Int!
+  tokensPerDay: Int!
+  tokensPerHour: Int!
+}
+
+"""A tag configuration for Google Tag Manager."""
+type TagManagerAccount {
+  accountId: String!
+  name: String!
+  shareData: Boolean
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+"""A Google Tag Manager container."""
+type TagManagerContainer {
+  containerId: String!
+  name: String!
+  publicId: String!
+  usageContext: [String!]!
+  domainName: [String!]
+  notes: String
+  account: TagManagerAccount
+  createTime: DateTime
+  updateTime: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Pagination / connection types
+# ─────────────────────────────────────────────
+
+"""Pagination cursor information."""
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+"""Paginated list of organizations."""
+type OrganizationConnection {
+  nodes: [Organization!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+  nextPageToken: String
+}
+
+"""Paginated list of Analytics account links."""
+type AnalyticsAccountLinkConnection {
+  nodes: [AnalyticsAccountLink!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+  nextPageToken: String
+}
+
+"""Paginated list of product links."""
+type ProductLinkConnection {
+  nodes: [ProductLink!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+  nextPageToken: String
+}
+
+"""Paginated list of user links."""
+type UserLinkConnection {
+  nodes: [UserLink!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+  nextPageToken: String
+}
+
+"""Paginated list of access bindings."""
+type AccessBindingConnection {
+  nodes: [AccessBinding!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+  nextPageToken: String
+}
+
+"""Paginated list of Analytics properties."""
+type AnalyticsPropertyConnection {
+  nodes: [AnalyticsProperty!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+  nextPageToken: String
+}
+
+"""Paginated list of Analytics accounts."""
+type AnalyticsAccountConnection {
+  nodes: [AnalyticsAccount!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+  nextPageToken: String
+}
+
+"""Paginated list of audit log entries."""
+type AuditLogEntryConnection {
+  nodes: [AuditLogEntry!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+  nextPageToken: String
+}
+
+# ─────────────────────────────────────────────
+# Input types
+# ─────────────────────────────────────────────
+
+"""Input for creating an Analytics account link."""
+input CreateAnalyticsAccountLinkInput {
+  organizationName: String!
+  analyticsAccount: String!
+  serviceLevel: ServiceLevel
+}
+
+"""Input for updating an Analytics account link."""
+input UpdateAnalyticsAccountLinkInput {
+  name: String!
+  serviceLevel: ServiceLevel
+}
+
+"""Input for creating a product link (CM360, DV360, SA360)."""
+input CreateProductLinkInput {
+  organizationName: String!
+  productType: ProductType!
+  accountId: String!
+  displayName: String
+}
+
+"""Input for creating a user link."""
+input CreateUserLinkInput {
+  organizationName: String!
+  email: String!
+  directRoles: [UserRole!]!
+}
+
+"""Input for updating a user link's roles."""
+input UpdateUserLinkInput {
+  name: String!
+  directRoles: [UserRole!]!
+}
+
+"""Input for batch creating user links."""
+input BatchCreateUserLinksInput {
+  organizationName: String!
+  requests: [CreateUserLinkInput!]!
+}
+
+"""Input for batch updating user links."""
+input BatchUpdateUserLinksInput {
+  organizationName: String!
+  requests: [UpdateUserLinkInput!]!
+}
+
+"""Input for batch deleting user links."""
+input BatchDeleteUserLinksInput {
+  organizationName: String!
+  names: [String!]!
+}
+
+"""Input for creating an access binding."""
+input CreateAccessBindingInput {
+  resource: String!
+  user: String!
+  roles: [String!]!
+}
+
+"""Input for updating an access binding."""
+input UpdateAccessBindingInput {
+  name: String!
+  roles: [String!]!
+}
+
+"""Input for running a property access report."""
+input RunPropertyAccessReportInput {
+  propertyName: String!
+  dimensions: [String!]
+  metrics: [String!]
+  dateRanges: [DateRangeInput!]
+  userRequestFilter: UserAccessFilterInput
+  expandGroups: Boolean
+  includeAllUsers: Boolean
+  returnEntityQuota: Boolean
+  limit: Int
+  offset: Int
+  orderBys: [AccessOrderByInput!]
+  timeZone: String
+}
+
+"""Date range for access reports."""
+input DateRangeInput {
+  startDate: String!
+  endDate: String!
+}
+
+"""Filter for user access in reports."""
+input UserAccessFilterInput {
+  userEmailFilter: StringFilterInput
+  dimensionFilters: [AccessDimensionFilterInput!]
+}
+
+"""String filter for report dimensions."""
+input StringFilterInput {
+  matchType: String!
+  value: String!
+  caseSensitive: Boolean
+}
+
+"""Dimension filter for access reports."""
+input AccessDimensionFilterInput {
+  dimensionName: String!
+  stringFilter: StringFilterInput
+}
+
+"""Order by clause for access report results."""
+input AccessOrderByInput {
+  dimensionName: String
+  metricName: String
+  descending: Boolean
+}
+
+"""Input for setting service level on an Analytics property."""
+input SetServiceLevelInput {
+  analyticsAccountLink: String!
+  analyticsPropertyServiceLevel: ServiceLevelInput!
+}
+
+"""Service level assignment for a property."""
+input ServiceLevelInput {
+  analyticsProperty: String!
+  serviceLevel: ServiceLevel!
+}
+
+"""Pagination parameters for list queries."""
+input PaginationInput {
+  pageSize: Int
+  pageToken: String
+}
+
+# ─────────────────────────────────────────────
+# Result types for mutations
+# ─────────────────────────────────────────────
+
+"""Result of a batch user link creation."""
+type BatchCreateUserLinksResult {
+  userLinks: [UserLink!]!
+}
+
+"""Result of a batch user link update."""
+type BatchUpdateUserLinksResult {
+  userLinks: [UserLink!]!
+}
+
+"""Result of a batch user link deletion."""
+type BatchDeleteUserLinksResult {
+  deletedCount: Int!
+}
+
+"""Result of setting service level on a property."""
+type SetServiceLevelResult {
+  analyticsPropertyServiceLevel: AnalyticsPropertyServiceLevel!
+}
+
+"""Service level assignment record for a property."""
+type AnalyticsPropertyServiceLevel {
+  analyticsProperty: String!
+  serviceLevel: ServiceLevel!
+}
+
+# ─────────────────────────────────────────────
+# Query root
+# ─────────────────────────────────────────────
+
+type Query {
+  """Get a single GMP organization by resource name."""
+  organization(name: String!): Organization
+
+  """List all GMP organizations accessible to the caller."""
+  organizations(pagination: PaginationInput): OrganizationConnection!
+
+  """Get a single Analytics account link."""
+  analyticsAccountLink(name: String!): AnalyticsAccountLink
+
+  """List Analytics account links for an organization."""
+  analyticsAccountLinks(
+    parent: String!
+    pagination: PaginationInput
+  ): AnalyticsAccountLinkConnection!
+
+  """Get a single product link."""
+  productLink(name: String!): ProductLink
+
+  """List product links for an organization."""
+  productLinks(
+    parent: String!
+    productType: ProductType
+    pagination: PaginationInput
+  ): ProductLinkConnection!
+
+  """Get a single user link."""
+  userLink(name: String!): UserLink
+
+  """List user links for an organization."""
+  userLinks(
+    parent: String!
+    pagination: PaginationInput
+  ): UserLinkConnection!
+
+  """Get a single access binding."""
+  accessBinding(name: String!): AccessBinding
+
+  """List access bindings for a resource."""
+  accessBindings(
+    parent: String!
+    pagination: PaginationInput
+  ): AccessBindingConnection!
+
+  """Get a single Google Analytics account."""
+  analyticsAccount(name: String!): AnalyticsAccount
+
+  """List Google Analytics accounts accessible to the caller."""
+  analyticsAccounts(pagination: PaginationInput): AnalyticsAccountConnection!
+
+  """Get a single Google Analytics property."""
+  analyticsProperty(name: String!): AnalyticsProperty
+
+  """List Google Analytics properties for an account."""
+  analyticsProperties(
+    parent: String!
+    pagination: PaginationInput
+  ): AnalyticsPropertyConnection!
+
+  """Run a property access report."""
+  runPropertyAccessReport(
+    input: RunPropertyAccessReportInput!
+  ): PropertyAccessReport!
+
+  """Get current quota status for the caller."""
+  quotaStatus: QuotaStatus!
+
+  """List audit log entries for an organization."""
+  auditLogEntries(
+    parent: String!
+    filter: String
+    pagination: PaginationInput
+  ): AuditLogEntryConnection!
+
+  """Get a single Campaign Manager account."""
+  campaignManagerAccount(id: String!): CampaignManagerAccount
+
+  """Get a single Display & Video 360 partner."""
+  displayVideo360Partner(partnerId: String!): DisplayVideo360Partner
+
+  """Get a single Display & Video 360 advertiser."""
+  displayVideo360Advertiser(advertiserId: String!): DisplayVideo360Advertiser
+
+  """Get a single Search Ads 360 advertiser."""
+  searchAds360Advertiser(advertiserId: String!): SearchAds360Advertiser
+
+  """Get a Tag Manager account."""
+  tagManagerAccount(accountId: String!): TagManagerAccount
+
+  """List Tag Manager containers for an account."""
+  tagManagerContainers(
+    accountId: String!
+    pagination: PaginationInput
+  ): [TagManagerContainer!]!
+
+  """Get a single integration configuration."""
+  integrationConfig(name: String!): IntegrationConfig
+}
+
+# ─────────────────────────────────────────────
+# Mutation root
+# ─────────────────────────────────────────────
+
+type Mutation {
+  """Create a link between a GMP organization and a Google Analytics account."""
+  createAnalyticsAccountLink(
+    input: CreateAnalyticsAccountLinkInput!
+  ): AnalyticsAccountLink!
+
+  """Update service level on an Analytics account link."""
+  updateAnalyticsAccountLink(
+    input: UpdateAnalyticsAccountLinkInput!
+  ): AnalyticsAccountLink!
+
+  """Delete an Analytics account link."""
+  deleteAnalyticsAccountLink(name: String!): Boolean!
+
+  """Set service level for an Analytics property."""
+  setPropertyServiceLevel(input: SetServiceLevelInput!): SetServiceLevelResult!
+
+  """Create a product link (CM360, DV360, SA360) for an organization."""
+  createProductLink(input: CreateProductLinkInput!): ProductLink!
+
+  """Delete a product link from an organization."""
+  deleteProductLink(name: String!): Boolean!
+
+  """Create a single user link on a GMP organization."""
+  createUserLink(input: CreateUserLinkInput!): UserLink!
+
+  """Batch create multiple user links."""
+  batchCreateUserLinks(
+    input: BatchCreateUserLinksInput!
+  ): BatchCreateUserLinksResult!
+
+  """Update the roles of a user link."""
+  updateUserLink(input: UpdateUserLinkInput!): UserLink!
+
+  """Batch update multiple user links."""
+  batchUpdateUserLinks(
+    input: BatchUpdateUserLinksInput!
+  ): BatchUpdateUserLinksResult!
+
+  """Delete a single user link."""
+  deleteUserLink(name: String!): Boolean!
+
+  """Batch delete multiple user links."""
+  batchDeleteUserLinks(
+    input: BatchDeleteUserLinksInput!
+  ): BatchDeleteUserLinksResult!
+
+  """Create an access binding on a resource."""
+  createAccessBinding(input: CreateAccessBindingInput!): AccessBinding!
+
+  """Update an existing access binding."""
+  updateAccessBinding(input: UpdateAccessBindingInput!): AccessBinding!
+
+  """Delete an access binding."""
+  deleteAccessBinding(name: String!): Boolean!
+}
