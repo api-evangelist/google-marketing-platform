@@ -45,6 +45,12 @@ apis:
   - url: graphql/google-marketing-platform-graphql.md
     type: GraphQL
 common:
+- type: VulnerabilityDisclosure
+  url: security/google-marketing-platform-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/google-marketing-platform-domain-security.yml
+- type: Authentication
+  url: authentication/google-marketing-platform-authentication.yml
 - type: OAuthScopes
   url: scopes/google-marketing-platform-scopes.yml
 - type: GitHubOrganization
