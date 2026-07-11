@@ -45,6 +45,8 @@ apis:
   - url: graphql/google-marketing-platform-graphql.md
     type: GraphQL
 common:
+- type: OAuthScopes
+  url: scopes/google-marketing-platform-scopes.yml
 - type: GitHubOrganization
   url: https://github.com/google-marketing-solutions
 - type: LinkedIn
@@ -69,6 +71,8 @@ common:
   url: https://developers.google.com/marketing-platform/support
 - type: JSONLD
   url: json-ld/json-ld.yml
+- url: https://blog.google/products/marketingplatform/rss/
+  type: Blog
 - type: Features
   data:
   - name: Organization Management
