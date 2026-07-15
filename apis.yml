@@ -45,6 +45,8 @@ apis:
   - url: graphql/google-marketing-platform-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/google-marketing-platform-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/google-marketing-platform-vulnerability-disclosure.yml
 - type: DomainSecurity
