@@ -4,7 +4,20 @@ description: The Google Marketing Platform Admin API provides programmatic acces
   to manage links between Google Marketing Platform organizations and Google Analytics
   accounts. It enables creating, updating, deleting, and listing organization links
   and managing service levels for integrated marketing analytics.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-marketing-platform.png
 url: https://raw.githubusercontent.com/api-evangelist/google-marketing-platform/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
@@ -18,22 +31,18 @@ tags:
 - Organization Management
 - Platform Administration
 apis:
-- aid: google-marketing-platform:admin
-  name: Google Marketing Platform Admin API
-  description: The Marketing Platform Admin API enables programmatic management of
-    organization-level settings including links to Google Analytics accounts, service
-    level configuration, and organization administration.
+- aid: google-marketing-platform:google-marketing-platform-v1alpha-api
+  name: Google Marketing Platform Admin V1alpha API
+  description: The V1alpha API from Google Marketing Platform Admin — 4 operation(s) for v1alpha.
   humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
   baseURL: https://marketingplatformadmin.googleapis.com
   tags:
-  - Admin
-  - Analytics
-  - Organizations
+  - V1alpha
   properties:
+  - type: OpenAPI
+    url: openapi/google-marketing-platform-v1alpha-api-openapi.yml
   - type: Documentation
     url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
-  - type: OpenAPI
-    url: openapi/openapi.yml
   - type: Authentication
     url: https://developers.google.com/docs/api/how-tos/authorizing
   - type: GettingStarted
@@ -42,9 +51,11 @@ apis:
     url: json-schema/json-schema.yml
   - type: JSONLD
     url: json-ld/json-ld.yml
-  - url: graphql/google-marketing-platform-graphql.md
-    type: GraphQL
+  - type: GraphQL
+    url: graphql/google-marketing-platform-graphql.md
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/google-marketing-platform-admin/overview
 - type: AgenticAccess
   url: agentic-access/google-marketing-platform-agentic-access.yml
 - type: VulnerabilityDisclosure
