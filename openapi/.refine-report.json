@@ -1,0 +1,14 @@
+{
+  "provider": "google-marketing-platform",
+  "sources": [
+    "google-marketing-platform-v1alpha-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-marketing-platform-v1alpha-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

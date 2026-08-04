@@ -1,0 +1,603 @@
+{
+  "info": {
+    "_postman_id": "618f7cdf-c222-46b7-b192-6521275c831d",
+    "name": "Google Marketing Platform Admin V1alpha API",
+    "description": "The Google Marketing Platform Admin API provides programmatic access to manage links between Google Marketing Platform organizations and Google Analytics accounts, including service level management.\n\nContact Support:\n Name: Google",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:49:23.000Z",
+    "updatedAt": "2026-07-28T01:49:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-618f7cdf-c222-46b7-b192-6521275c831d"
+  },
+  "item": [
+    {
+      "name": "v1alpha",
+      "item": [
+        {
+          "name": "organizations",
+          "item": [
+            {
+              "name": "Google Marketing Platform Admin List Organizations",
+              "id": "d8e28392-a37f-4d49-bbf3-c923c51a1690",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1alpha/organizations?pageSize=<integer>&pageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1alpha",
+                    "organizations"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Lists the Google Marketing Platform organizations accessible by the caller."
+              },
+              "response": [
+                {
+                  "id": "1ddf28be-37eb-4511-9b1a-0baf6d34d621",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1alpha/organizations?pageSize=<integer>&pageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1alpha",
+                        "organizations"
+                      ],
+                      "query": [
+                        {
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "pageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"organizations\": [\n    {\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:49:23.000Z",
+                  "updatedAt": "2026-07-28T01:49:23.000Z",
+                  "uid": "35240-1ddf28be-37eb-4511-9b1a-0baf6d34d621"
+                }
+              ],
+              "createdAt": "2026-07-28T01:49:23.000Z",
+              "updatedAt": "2026-07-28T01:49:23.000Z",
+              "uid": "35240-d8e28392-a37f-4d49-bbf3-c923c51a1690"
+            }
+          ],
+          "id": "4e1a0472-14d9-48e5-baa8-a0668d2c5b4e",
+          "createdAt": "2026-07-28T01:49:23.000Z",
+          "updatedAt": "2026-07-28T01:49:23.000Z",
+          "uid": "35240-4e1a0472-14d9-48e5-baa8-a0668d2c5b4e"
+        },
+        {
+          "name": "{parent}",
+          "item": [
+            {
+              "name": "analyticsAccountLinks",
+              "item": [
+                {
+                  "name": "Google Marketing Platform Admin List Analytics Account Links",
+                  "id": "ddc63013-ef7c-4f9d-8046-bbfa208056f1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1alpha/:parent/analyticsAccountLinks?pageSize=<integer>&pageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1alpha",
+                        ":parent",
+                        "analyticsAccountLinks"
+                      ],
+                      "query": [
+                        {
+                          "key": "pageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "pageToken",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "cf4a4d45-2787-4492-ad29-f8d5046bd7af",
+                          "key": "parent",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Lists analytics account links for the specified organization."
+                  },
+                  "response": [
+                    {
+                      "id": "a04c28cf-54ac-466c-81aa-546803557ff1",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1alpha/:parent/analyticsAccountLinks?pageSize=<integer>&pageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1alpha",
+                            ":parent",
+                            "analyticsAccountLinks"
+                          ],
+                          "query": [
+                            {
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "pageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "parent"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"analyticsAccountLinks\": [\n    {\n      \"name\": \"<string>\",\n      \"analyticsAccount\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"linkVerificationState\": \"LINK_VERIFICATION_STATE_NOT_VERIFIED\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"analyticsAccount\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"linkVerificationState\": \"LINK_VERIFICATION_STATE_UNSPECIFIED\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:49:23.000Z",
+                      "updatedAt": "2026-07-28T01:49:23.000Z",
+                      "uid": "35240-a04c28cf-54ac-466c-81aa-546803557ff1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:49:23.000Z",
+                  "updatedAt": "2026-07-28T01:49:23.000Z",
+                  "uid": "35240-ddc63013-ef7c-4f9d-8046-bbfa208056f1"
+                },
+                {
+                  "name": "Google Marketing Platform Admin Create Analytics Account Link",
+                  "id": "7d5e6840-e9f3-4484-a469-6cdd2a41e411",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"analyticsAccount\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"linkVerificationState\": \"LINK_VERIFICATION_STATE_NOT_VERIFIED\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1alpha/:parent/analyticsAccountLinks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1alpha",
+                        ":parent",
+                        "analyticsAccountLinks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d280cf30-22e2-42cd-90f8-77e57abda822",
+                          "key": "parent",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Creates an analytics account link for the specified organization."
+                  },
+                  "response": [
+                    {
+                      "id": "6c69a09a-f43b-4f87-8a48-8f2b5181e2bd",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"analyticsAccount\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"linkVerificationState\": \"LINK_VERIFICATION_STATE_NOT_VERIFIED\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1alpha/:parent/analyticsAccountLinks",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1alpha",
+                            ":parent",
+                            "analyticsAccountLinks"
+                          ],
+                          "variable": [
+                            {
+                              "key": "parent"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"analyticsAccount\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"linkVerificationState\": \"LINK_VERIFICATION_STATE_NOT_VERIFIED\"\n}",
+                      "createdAt": "2026-07-28T01:49:23.000Z",
+                      "updatedAt": "2026-07-28T01:49:23.000Z",
+                      "uid": "35240-6c69a09a-f43b-4f87-8a48-8f2b5181e2bd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:49:23.000Z",
+                  "updatedAt": "2026-07-28T01:49:23.000Z",
+                  "uid": "35240-7d5e6840-e9f3-4484-a469-6cdd2a41e411"
+                }
+              ],
+              "id": "e29f4954-d64d-4887-bd25-d5bf596d27d9",
+              "createdAt": "2026-07-28T01:49:23.000Z",
+              "updatedAt": "2026-07-28T01:49:23.000Z",
+              "uid": "35240-e29f4954-d64d-4887-bd25-d5bf596d27d9"
+            }
+          ],
+          "id": "f9ed1307-a2c0-4abe-b887-38a2b9ac0beb",
+          "createdAt": "2026-07-28T01:49:23.000Z",
+          "updatedAt": "2026-07-28T01:49:23.000Z",
+          "uid": "35240-f9ed1307-a2c0-4abe-b887-38a2b9ac0beb"
+        },
+        {
+          "name": "{name}",
+          "item": [
+            {
+              "name": "Google Marketing Platform Admin Delete Analytics Account Link",
+              "id": "6ddfeeeb-5a56-47ba-acae-0ac11305bc93",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v1alpha/:name",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1alpha",
+                    ":name"
+                  ],
+                  "variable": [
+                    {
+                      "id": "012bf415-2699-4f62-8d3e-a1ced34e7d5a",
+                      "key": "name",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes an analytics account link."
+              },
+              "response": [
+                {
+                  "id": "504dde01-b1fe-4ecc-8b70-48d4e625f904",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1alpha/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1alpha",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:49:23.000Z",
+                  "updatedAt": "2026-07-28T01:49:23.000Z",
+                  "uid": "35240-504dde01-b1fe-4ecc-8b70-48d4e625f904"
+                }
+              ],
+              "createdAt": "2026-07-28T01:49:23.000Z",
+              "updatedAt": "2026-07-28T01:49:23.000Z",
+              "uid": "35240-6ddfeeeb-5a56-47ba-acae-0ac11305bc93"
+            }
+          ],
+          "id": "c174e4e1-0da7-4ade-8ed0-5c59ed3c8f68",
+          "createdAt": "2026-07-28T01:49:23.000Z",
+          "updatedAt": "2026-07-28T01:49:23.000Z",
+          "uid": "35240-c174e4e1-0da7-4ade-8ed0-5c59ed3c8f68"
+        },
+        {
+          "name": "{analyticsAccountLink}:setPropertyServiceLevel",
+          "item": [
+            {
+              "name": "Google Marketing Platform Admin Set Property Service Level",
+              "id": "247ae1f8-24ae-4a4c-ad84-791cb2b02176",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"analyticsProperty\": \"<string>\",\n  \"serviceLevel\": \"ANALYTICS_SERVICE_LEVEL_STANDARD\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1alpha/{{analyticsAccountLink}}:setPropertyServiceLevel",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1alpha",
+                    "{{analyticsAccountLink}}:setPropertyServiceLevel"
+                  ]
+                },
+                "description": "Sets the service level for an Analytics property."
+              },
+              "response": [
+                {
+                  "id": "ca8f29fa-791a-4f83-aafb-d777a0dd04f6",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"analyticsProperty\": \"<string>\",\n  \"serviceLevel\": \"ANALYTICS_SERVICE_LEVEL_STANDARD\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1alpha/{{analyticsAccountLink}}:setPropertyServiceLevel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1alpha",
+                        "{{analyticsAccountLink}}:setPropertyServiceLevel"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T01:49:23.000Z",
+                  "updatedAt": "2026-07-28T01:49:23.000Z",
+                  "uid": "35240-ca8f29fa-791a-4f83-aafb-d777a0dd04f6"
+                }
+              ],
+              "createdAt": "2026-07-28T01:49:23.000Z",
+              "updatedAt": "2026-07-28T01:49:23.000Z",
+              "uid": "35240-247ae1f8-24ae-4a4c-ad84-791cb2b02176"
+            }
+          ],
+          "id": "ee5ad21a-5359-4c23-b742-e05006073bbd",
+          "createdAt": "2026-07-28T01:49:23.000Z",
+          "updatedAt": "2026-07-28T01:49:23.000Z",
+          "uid": "35240-ee5ad21a-5359-4c23-b742-e05006073bbd"
+        }
+      ],
+      "id": "328e1461-a28e-4716-bac3-9be66544088b",
+      "createdAt": "2026-07-28T01:49:23.000Z",
+      "updatedAt": "2026-07-28T01:49:23.000Z",
+      "uid": "35240-328e1461-a28e-4716-bac3-9be66544088b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/marketingplatformadmin.analytics.read https://www.googleapis.com/auth/marketingplatformadmin.analytics.update",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://marketingplatformadmin.googleapis.com"
+    },
+    {
+      "key": "analyticsAccountLink",
+      "value": "<string>"
+    }
+  ]
+}
