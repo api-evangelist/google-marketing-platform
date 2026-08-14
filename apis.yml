@@ -20,7 +20,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-marketing-platform.png
 url: https://raw.githubusercontent.com/api-evangelist/google-marketing-platform/refs/heads/main/apis.yml
 created: '2026-03-13'
-modified: '2026-05-19'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 type: Index
 access: 3rd-Party
@@ -53,6 +53,18 @@ apis:
     url: json-ld/json-ld.yml
   - type: GraphQL
     url: graphql/google-marketing-platform-graphql.md
+  - type: DiscoveryDocument
+    url: openapi/google-marketing-platform-v1alpha-discovery.json
+  - type: Protobuf
+    url: grpc/_index.yml
+  - type: Overlay
+    url: overlays/google-marketing-platform-v1alpha-api-overlay.yaml
+  - type: APIReference
+    url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  - type: RateLimits
+    url: rate-limits/google-marketing-platform-rate-limits.yml
+  - type: Postman
+    url: postman/google-marketing-platform-v1alpha-api.postman_collection.json
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/google-marketing-platform-admin/overview
@@ -92,6 +104,54 @@ common:
   url: json-ld/json-ld.yml
 - url: https://blog.google/products/marketingplatform/rss/
   type: Blog
+- type: Packages
+  url: packages/google-marketing-platform-packages.yml
+- type: SDKs
+  url: packages/google-marketing-platform-packages.yml
+- type: WellKnown
+  url: well-known/google-marketing-platform-well-known.yml
+- type: SecurityTxt
+  url: well-known/google-marketing-platform-security.txt
+- type: Security
+  url: https://g.co/vrp
+- type: LLMsTxt
+  url: llms/google-marketing-platform-llms.txt
+- type: Overlay
+  url: overlays/google-marketing-platform-v1alpha-api-overlay.yaml
+- type: Protobuf
+  url: grpc/_index.yml
+- type: Conformance
+  url: conformance/google-marketing-platform-conformance.yml
+- type: ErrorCatalog
+  url: errors/google-marketing-platform-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/google-marketing-platform-lifecycle.yml
+- type: Conventions
+  url: conventions/google-marketing-platform-conventions.yml
+- type: DataModel
+  url: data-model/google-marketing-platform-data-model.yml
+- type: ChangeLog
+  url: changelog/google-marketing-platform-changelog.yml
+- type: ChangeLog
+  url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/changelog
+- type: AgentSkill
+  url: skills/_index.yml
+- type: RateLimits
+  url: rate-limits/google-marketing-platform-rate-limits.yml
+- type: Plans
+  url: plans/google-marketing-platform-plans-pricing.yml
+- type: FinOps
+  url: finops/google-marketing-platform-finops.yml
+- type: APIReference
+  url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+- type: Quickstart
+  url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/quickstart
+- type: SDKs
+  url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/client-libraries
+- type: Login
+  url: https://console.cloud.google.com/apis/library/marketingplatformadmin.googleapis.com
+- type: IssueTracker
+  url: https://issuetracker.google.com/issues/new?component=1603054
 - type: Features
   data:
   - name: Organization Management
@@ -134,3 +194,8 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 23
+  pass: local-v1
