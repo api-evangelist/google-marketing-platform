@@ -1,0 +1,173 @@
+generated: '2026-08-13'
+method: searched
+source: https://developers.google.com/marketing-platform/devguides/api/admin/v1/client-libraries
+note: >-
+  Google ships two distinct generations of client for this API. The purpose-built
+  GAPIC clients (com.google.ads-marketingplatform:admin, googleads/marketingplatform-admin,
+  google-ads-marketingplatform-admin, @google-ads/marketing-platform-admin,
+  Google.Ads.MarketingPlatform.Admin.V1Alpha) are generated from the protos in
+  grpc/ and are the ones the provider's client-libraries page names. The older
+  Discovery-generated clients (googleapis on npm, google-api-python-client on
+  PyPI, google.golang.org/api on Go, google-apis-marketingplatformadmin_v1alpha
+  on RubyGems, com.google.apis:google-api-services-marketingplatformadmin on
+  Maven) reach the same REST surface through the generic Google API client.
+  CURRENCY FINDING — the Discovery-generated Java artifact
+  com.google.apis:google-api-services-marketingplatformadmin was last published
+  2024-05-30 against API revision 20240529, while the live Discovery Document is
+  revision 20260813. It is missing every method added in the 2025-10-29 release
+  (ListOrganizations, FindSalesPartnerManagedClients, ReportPropertyUsage) and
+  the 2024-04-09 GetOrganization method. Java callers should use the GAPIC
+  artifact com.google.ads-marketingplatform:admin (0.42.0, 2026-06-04) instead.
+  All versions below were read from each registry's metadata endpoint on
+  2026-08-13.
+packages:
+  - language: java
+    registry: maven
+    name: com.google.ads-marketingplatform:admin
+    url: https://central.sonatype.com/artifact/com.google.ads-marketingplatform/admin
+    install: 'implementation ''com.google.ads-marketingplatform:admin:0.42.0'''
+    official: true
+    generation: gapic
+    version: 0.42.0
+    published: '2026-06-04'
+    source_code: https://github.com/googleapis/google-cloud-java/tree/main/java-marketingplatformadminapi
+    note: >-
+      Sibling coordinates admin-bom and admin-parent are published at the same
+      version. The client-libraries page names this artifact as
+      "com.google.ads-marketingplatform:google-ads-marketingplatform-admin";
+      the coordinate resolvable on Maven Central is com.google.ads-marketingplatform:admin.
+  - language: php
+    registry: packagist
+    name: googleads/marketingplatform-admin
+    url: https://packagist.org/packages/googleads/marketingplatform-admin
+    install: composer require googleads/marketingplatform-admin
+    official: true
+    generation: gapic
+    version: v0.5.0
+    published: '2026-08-10'
+    source_code: https://github.com/googleapis/php-ads-marketingplatform-admin
+  - language: python
+    registry: pypi
+    name: google-ads-marketingplatform-admin
+    url: https://pypi.org/project/google-ads-marketingplatform-admin/
+    install: pip install google-ads-marketingplatform-admin
+    official: true
+    generation: gapic
+    version: 0.6.0
+    published: '2026-06-03'
+    source_code: https://github.com/googleapis/google-cloud-python/tree/main/packages/google-ads-marketingplatform-admin
+  - language: javascript
+    registry: npm
+    name: '@google-ads/marketing-platform-admin'
+    url: https://www.npmjs.com/package/@google-ads/marketing-platform-admin
+    install: npm install @google-ads/marketing-platform-admin
+    official: true
+    generation: gapic
+    version: 0.5.0
+    published: '2026-08-10'
+    source_code: https://github.com/googleapis/google-cloud-node/tree/main/packages/google-marketingplatform-admin
+  - language: dotnet
+    registry: nuget
+    name: Google.Ads.MarketingPlatform.Admin.V1Alpha
+    url: https://www.nuget.org/packages/Google.Ads.MarketingPlatform.Admin.V1Alpha
+    install: dotnet add package Google.Ads.MarketingPlatform.Admin.V1Alpha --version 1.0.0-alpha02
+    official: true
+    generation: gapic
+    version: 1.0.0-alpha02
+    published: '2025-11-03'
+    source_code: https://github.com/googleapis/google-cloud-dotnet/tree/main/apis/Google.Ads.MarketingPlatform.Admin.V1Alpha
+    note: >-
+      Only ever published as a prerelease; latest is 1.0.0-alpha02 from
+      2025-11-03, nine months stale relative to the other GAPIC clients.
+  - language: ruby
+    registry: rubygems
+    name: google-apis-marketingplatformadmin_v1alpha
+    url: https://rubygems.org/gems/google-apis-marketingplatformadmin_v1alpha
+    install: gem install google-apis-marketingplatformadmin_v1alpha
+    official: true
+    generation: discovery
+    version: 0.9.0
+    published: '2026-06-21'
+    source_code: https://github.com/googleapis/google-api-ruby-client/tree/main/generated/google-apis-marketingplatformadmin_v1alpha
+    note: >-
+      The client-libraries page lists this Discovery-generated gem as the Ruby
+      option; there is no GAPIC Ruby client for this API.
+  - language: java
+    registry: maven
+    name: com.google.apis:google-api-services-marketingplatformadmin
+    url: https://central.sonatype.com/artifact/com.google.apis/google-api-services-marketingplatformadmin
+    install: 'implementation ''com.google.apis:google-api-services-marketingplatformadmin:v1alpha-rev20240529-2.0.0'''
+    official: true
+    generation: discovery
+    version: v1alpha-rev20240529-2.0.0
+    published: '2024-05-30'
+    source_code: https://github.com/googleapis/google-api-java-client-services
+    stale: true
+    note: >-
+      Pinned to Discovery revision 20240529; the live Discovery Document is
+      revision 20260813. Does not carry GetOrganization, ListOrganizations,
+      FindSalesPartnerManagedClients or ReportPropertyUsage.
+  - language: javascript
+    registry: npm
+    name: googleapis
+    url: https://www.npmjs.com/package/googleapis
+    install: npm install googleapis
+    official: true
+    generation: discovery
+    version: 174.0.1
+    published: '2026-08-05'
+    source_code: https://github.com/googleapis/google-api-nodejs-client
+    note: >-
+      Umbrella Discovery client; exposes this API at
+      build/src/apis/marketingplatformadmin (verified 200 on unpkg 2026-08-13).
+  - language: python
+    registry: pypi
+    name: google-api-python-client
+    url: https://pypi.org/project/google-api-python-client/
+    install: pip install google-api-python-client
+    official: true
+    generation: discovery
+    version: 2.198.0
+    published: '2026-06-25'
+    source_code: https://github.com/googleapis/google-api-python-client
+    note: >-
+      Generic Discovery client; reaches this API via
+      build('marketingplatformadmin', 'v1alpha').
+  - language: go
+    registry: go
+    name: google.golang.org/api/marketingplatformadmin/v1alpha
+    url: https://pkg.go.dev/google.golang.org/api/marketingplatformadmin/v1alpha
+    install: go get google.golang.org/api/marketingplatformadmin/v1alpha
+    official: true
+    generation: discovery
+    version: v0.293.0
+    published: '2026-08-11'
+    source_code: https://github.com/googleapis/google-api-go-client
+    note: >-
+      Version is that of the parent google.golang.org/api module, which is what
+      the Go module proxy publishes; the subpackage is not versioned separately.
+      Package path returned 200 on pkg.go.dev 2026-08-13. There is no GAPIC Go
+      client for this API.
+  - language: php
+    registry: packagist
+    name: google/apiclient
+    url: https://packagist.org/packages/google/apiclient
+    install: composer require google/apiclient
+    official: true
+    generation: discovery
+    version: v2.19.4
+    published: '2026-06-29'
+    source_code: https://github.com/googleapis/google-api-php-client
+  - language: dotnet
+    registry: nuget
+    name: Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha
+    url: https://www.nuget.org/packages/Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha
+    install: dotnet add package Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha
+    official: true
+    generation: discovery
+    version: 1.74.0.4079
+    published: '2026-05-12'
+    source_code: https://github.com/googleapis/google-api-dotnet-client
+absent:
+  - registry: crates.io
+    note: 'No first-party Rust client is published for this API; checked 2026-08-13.'

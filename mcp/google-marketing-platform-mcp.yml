@@ -1,0 +1,111 @@
+generated: '2026-08-13'
+method: derived
+status: candidate
+source: openapi/google-marketing-platform-v1alpha-discovery.json
+note: >-
+  NO first-party MCP server exists for the Google Marketing Platform Admin API.
+  Searched the provider's devguide, quickstart, client-libraries and changelog
+  pages, the googleapis GitHub organization, and the MCP ecosystem on
+  2026-08-13; probed https://marketingplatformadmin.googleapis.com/mcp
+  (404). Google does ship official MCP servers for OTHER products — a Google
+  Ads MCP server shipped in 2026 — but none of them names or wraps the
+  Marketing Platform Admin API, and attributing a sibling product's server to
+  this API would credit Google with an agent surface it has not shipped here.
+  The tools below are a DERIVED CANDIDATE set: one tool per method in the live
+  Discovery Document (revision 20260813), with the real backing operation
+  recorded. They are a design proposal, not a published server.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: oauth
+  auth_note: >-
+    Any server built against this API would carry Google OAuth 2.0
+    (authorizationCode) with the two marketingplatformadmin.analytics scopes,
+    and would additionally need a Cloud quota project set on the credential.
+  verified: probed
+  verified_note: >-
+    POST tools/list to https://marketingplatformadmin.googleapis.com/mcp
+    returned 404 on 2026-08-13. No other candidate endpoint is published.
+server:
+  name: google-marketing-platform-admin
+  transport: null
+  url: null
+tools:
+  - name: list_organizations
+    description: List the Google Marketing Platform organizations accessible to the caller.
+    source_operation: openapi/google-marketing-platform-v1alpha-api-openapi.yml#listOrganizations
+    discovery_method: marketingplatformadmin.organizations.list
+    scopes: [marketingplatformadmin.analytics.read, marketingplatformadmin.analytics.update]
+    mutating: false
+  - name: get_organization
+    description: Look up a single Google Marketing Platform organization by resource name.
+    source_operation: null
+    source_operation_note: >-
+      Not present in the repo's OpenAPI; backed by Discovery method
+      marketingplatformadmin.organizations.get (added 2024-04-09).
+    discovery_method: marketingplatformadmin.organizations.get
+    scopes: [marketingplatformadmin.analytics.read, marketingplatformadmin.analytics.update]
+    mutating: false
+  - name: list_analytics_account_links
+    description: List the Google Analytics accounts linked to a GMP organization.
+    source_operation: openapi/google-marketing-platform-v1alpha-api-openapi.yml#listAnalyticsAccountLinks
+    discovery_method: marketingplatformadmin.organizations.analyticsAccountLinks.list
+    scopes: [marketingplatformadmin.analytics.read, marketingplatformadmin.analytics.update]
+    mutating: false
+  - name: create_analytics_account_link
+    description: Link a Google Analytics account to a GMP organization.
+    source_operation: openapi/google-marketing-platform-v1alpha-api-openapi.yml#createAnalyticsAccountLink
+    discovery_method: marketingplatformadmin.organizations.analyticsAccountLinks.create
+    scopes: [marketingplatformadmin.analytics.update]
+    mutating: true
+    risk_note: >-
+      No idempotency key exists on this API; a retried call can create a
+      duplicate link. A server exposing this tool should require confirmation.
+  - name: delete_analytics_account_link
+    description: Detach a Google Analytics account from a GMP organization.
+    source_operation: openapi/google-marketing-platform-v1alpha-api-openapi.yml#deleteAnalyticsAccountLink
+    discovery_method: marketingplatformadmin.organizations.analyticsAccountLinks.delete
+    scopes: [marketingplatformadmin.analytics.update]
+    mutating: true
+    risk_note: Destructive; unlinks an Analytics account from the organization.
+  - name: set_property_service_level
+    description: >-
+      Set an Analytics property's service level (STANDARD or 360).
+    source_operation: openapi/google-marketing-platform-v1alpha-api-openapi.yml#setPropertyServiceLevel
+    discovery_method: marketingplatformadmin.organizations.analyticsAccountLinks.setPropertyServiceLevel
+    scopes: [marketingplatformadmin.analytics.update]
+    mutating: true
+    risk_note: >-
+      Commercially consequential — moves a property onto or off the paid
+      Analytics 360 service level. Should be human-in-the-loop in any server.
+  - name: report_property_usage
+    description: >-
+      Return per-property event usage and aggregate billing information for an
+      organization.
+    source_operation: null
+    source_operation_note: >-
+      Not present in the repo's OpenAPI; backed by Discovery method
+      marketingplatformadmin.organizations.reportPropertyUsage (added
+      2025-10-29).
+    discovery_method: marketingplatformadmin.organizations.reportPropertyUsage
+    scopes: [marketingplatformadmin.analytics.read, marketingplatformadmin.analytics.update]
+    mutating: false
+    data_note: Returns BillInfo (baseFee, eventFee, priceProtectionCredit, total).
+  - name: find_sales_partner_managed_clients
+    description: >-
+      List the client organizations managed by a sales-partner organization.
+    source_operation: null
+    source_operation_note: >-
+      Not present in the repo's OpenAPI; backed by Discovery method
+      marketingplatformadmin.organizations.findSalesPartnerManagedClients
+      (added 2025-10-29).
+    discovery_method: marketingplatformadmin.organizations.findSalesPartnerManagedClients
+    scopes: [marketingplatformadmin.analytics.read, marketingplatformadmin.analytics.update]
+    mutating: false
+coverage:
+  discovery_methods: 8
+  candidate_tools: 8
+  tools_bound_to_repo_openapi: 5
+  tools_backed_only_by_discovery: 3

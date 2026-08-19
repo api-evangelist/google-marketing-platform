@@ -1,0 +1,49 @@
+generated: '2026-08-13'
+method: searched
+source: https://developers.google.com/marketing-platform/devguides/api/admin/v1/changelog
+scheme: dated
+current_version: v1alpha
+current_revision: '20260813'
+revision_source: https://marketingplatformadmin.googleapis.com/$discovery/rest?version=v1alpha
+note: >-
+  The provider's changelog is a short dated list, not a semver release feed.
+  Three entries exist in total since the API's initial release — this is the
+  complete published history, not a recent window. The Discovery Document
+  additionally carries a dated revision field that moves more often than the
+  changelog does; revision 20260813 was live on 2026-08-13 while the newest
+  changelog entry is 2025-10-29.
+entry_count: 3
+entries:
+  - date: '2025-10-29'
+    title: New organizations methods
+    breaking: false
+    additions:
+      - ListOrganizations
+      - FindSalesPartnerManagedClients
+      - ReportPropertyUsage
+    highlights: >-
+      "Added the ListOrganizations, FindSalesPartnerManagedClients and
+      ReportPropertyUsage methods to v1alpha"
+  - date: '2024-04-09'
+    title: Method to retrieve a single organization
+    breaking: false
+    additions:
+      - GetOrganization
+    highlights: >-
+      "Added the GetOrganization method to v1alpha of the GMP Admin API"
+  - date: '2024-03-06'
+    title: Initial release
+    breaking: false
+    additions: []
+    highlights: Google Marketing Platform Admin API v1alpha was released.
+observations:
+  - >-
+    No breaking change has been announced in the API's published history, but
+    the API is at ALPHA launch stage and the Google APIs Terms of Service
+    deprecation commitment does not cover it — see
+    lifecycle/google-marketing-platform-lifecycle.yml.
+  - >-
+    The 2025-10-29 additions are the ones missing from the repo's OpenAPI and
+    from the stale Discovery-generated Java client
+    (com.google.apis:google-api-services-marketingplatformadmin, pinned to
+    revision 20240529).

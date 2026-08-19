@@ -1,0 +1,44 @@
+generated: '2026-08-13'
+method: searched
+source: https://github.com/googleapis/googleapis/tree/master/google/marketingplatform/admin/v1alpha
+note: >-
+  First-party proto3 definitions for the Google Marketing Platform Admin API,
+  saved verbatim from the googleapis/googleapis repository — the canonical
+  source Google generates its own GAPIC client libraries from. These are the
+  complete surface: 8 rpcs against the 8 methods in the live Discovery
+  Document, versus 5 operations in the repo's OpenAPI.
+service: google.marketingplatform.admin.v1alpha.MarketingplatformAdminService
+package: google.marketingplatform.admin.v1alpha
+host: marketingplatformadmin.googleapis.com
+launch_stage: ALPHA
+files:
+  - file: google-marketing-platform-marketingplatform-admin.proto
+    kind: service
+    source: https://raw.githubusercontent.com/googleapis/googleapis/master/google/marketingplatform/admin/v1alpha/marketingplatform_admin.proto
+    http_status: 200
+    rpcs:
+      - GetOrganization
+      - ListOrganizations
+      - FindSalesPartnerManagedClients
+      - ListAnalyticsAccountLinks
+      - CreateAnalyticsAccountLink
+      - DeleteAnalyticsAccountLink
+      - SetPropertyServiceLevel
+      - ReportPropertyUsage
+  - file: google-marketing-platform-resources.proto
+    kind: resources
+    source: https://raw.githubusercontent.com/googleapis/googleapis/master/google/marketingplatform/admin/v1alpha/resources.proto
+    http_status: 200
+    messages: [Organization, AnalyticsAccountLink]
+    enums: [LinkVerificationState, AnalyticsServiceLevel, AnalyticsPropertyType]
+  - file: google-marketing-platform-grpc-service-config.json
+    kind: grpc-service-config
+    source: https://raw.githubusercontent.com/googleapis/googleapis/master/google/marketingplatform/admin/v1alpha/marketingplatform_admin_v1alpha_grpc_service_config.json
+    http_status: 200
+    captures: [timeout, retryPolicy]
+  - file: google-marketing-platform-service-config.yaml
+    kind: google-api-service-config
+    source: https://raw.githubusercontent.com/googleapis/googleapis/master/google/marketingplatform/admin/v1alpha/marketingplatformadmin_v1alpha.yaml
+    http_status: 200
+    captures: [authentication.rules canonical_scopes, publishing settings, launch_stage]
+fetched: '2026-08-13'

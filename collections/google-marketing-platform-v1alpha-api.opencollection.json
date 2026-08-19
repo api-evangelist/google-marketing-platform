@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Marketing Platform Admin V1alpha API",
+    "version": "v1alpha"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "V1alpha",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Marketing Platform Admin List Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://marketingplatformadmin.googleapis.com/v1alpha/organizations",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists the Google Marketing Platform organizations accessible by the caller."
+        },
+        {
+          "info": {
+            "name": "Google Marketing Platform Admin List Analytics Account Links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://marketingplatformadmin.googleapis.com/v1alpha/:parent/analyticsAccountLinks",
+            "params": [
+              {
+                "name": "parent",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists analytics account links for the specified organization."
+        },
+        {
+          "info": {
+            "name": "Google Marketing Platform Admin Create Analytics Account Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://marketingplatformadmin.googleapis.com/v1alpha/:parent/analyticsAccountLinks",
+            "params": [
+              {
+                "name": "parent",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an analytics account link for the specified organization."
+        },
+        {
+          "info": {
+            "name": "Google Marketing Platform Admin Delete Analytics Account Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://marketingplatformadmin.googleapis.com/v1alpha/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an analytics account link."
+        },
+        {
+          "info": {
+            "name": "Google Marketing Platform Admin Set Property Service Level",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://marketingplatformadmin.googleapis.com/v1alpha/:analyticsAccountLink:setPropertyServiceLevel",
+            "params": [
+              {
+                "name": "analyticsAccountLink",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the service level for an Analytics property."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,160 @@
+generated: '2026-08-13'
+method: searched
+source: https://developers.google.com/marketing-platform/devguides/api/admin/v1/quotas
+derived_from:
+  - openapi/google-marketing-platform-v1alpha-api-openapi.yml
+  - openapi/google-marketing-platform-v1alpha-discovery.json
+  - grpc/google-marketing-platform-marketingplatform-admin.proto
+format: google-json-error
+rfc9457: false
+note: >-
+  The repo's OpenAPI declares only 200 responses — it carries NO 4xx or 5xx
+  response objects at all, so nothing could be derived from it. The Discovery
+  Document likewise does not enumerate error responses; Google Discovery
+  Documents never do. What IS published and first-party is (a) the quota page's
+  explicit 403 rateLimitExceeded contract, (b) the canonical google.rpc.Code
+  set that every Google API maps onto, and (c) the gRPC service config's
+  retryable status codes. Only the first is API-specific and documented; the
+  rest are marked as platform-level and their status is recorded honestly
+  rather than asserted as this API's own error catalog.
+envelope:
+  container: error
+  fields:
+    - name: error.code
+      description: HTTP status code as an integer.
+    - name: error.message
+      description: Human-readable description. Not stable; do not branch on it.
+    - name: error.status
+      description: >-
+        Canonical google.rpc.Code enum name, e.g. PERMISSION_DENIED,
+        RESOURCE_EXHAUSTED, NOT_FOUND. This is the stable machine-readable
+        signal on modern Google APIs.
+    - name: error.errors[].reason
+      description: >-
+        Legacy per-error reason string, e.g. rateLimitExceeded. This is the
+        field the provider's own quota documentation tells callers to check.
+    - name: error.errors[].domain
+      description: Legacy error domain, e.g. usageLimits or global.
+    - name: error.details[]
+      description: >-
+        Optional typed google.rpc detail payloads (ErrorInfo, QuotaFailure,
+        BadRequest, RetryInfo) when the service attaches them.
+  content_type: application/json
+problems:
+  - status: 403
+    reason: rateLimitExceeded
+    grpc_status: RESOURCE_EXHAUSTED
+    title: Rate limit exceeded
+    documented: true
+    api_specific: true
+    source_doc: https://developers.google.com/marketing-platform/devguides/api/admin/v1/quotas
+    description: >-
+      The Cloud project exceeded one of the four published per-minute quotas
+      (requests 1200, requests per user 600, writes 300, writes per user 120).
+    remediation: >-
+      Wait one minute and retry; quotas are refilled at the start of the next
+      60-second interval. Do NOT treat this 403 as a permanent authorization
+      failure — this API signals quota exhaustion with 403, not 429, and the
+      generated gRPC clients will not retry it for you.
+    retryable: true
+  - status: 401
+    grpc_status: UNAUTHENTICATED
+    title: Missing or invalid credentials
+    documented: platform-level
+    api_specific: false
+    description: >-
+      No OAuth 2.0 access token supplied, or the token is expired or malformed.
+    remediation: >-
+      Re-run the OAuth flow, or refresh Application Default Credentials with
+      gcloud auth application-default login and the required scopes.
+    retryable: false
+  - status: 403
+    reason: forbidden
+    grpc_status: PERMISSION_DENIED
+    title: Insufficient permission or scope
+    documented: platform-level
+    api_specific: false
+    description: >-
+      The token lacks marketingplatformadmin.analytics.read (for reads) or
+      marketingplatformadmin.analytics.update (for
+      createAnalyticsAccountLink, deleteAnalyticsAccountLink and
+      setPropertyServiceLevel), or the authenticated user has no access to the
+      named GMP organization.
+    remediation: >-
+      Request the correct scope and confirm the user's role on the GMP
+      organization. Note this shares HTTP 403 with rateLimitExceeded — branch
+      on error.errors[].reason, not on the status code.
+    retryable: false
+  - status: 403
+    reason: accessNotConfigured
+    grpc_status: PERMISSION_DENIED
+    title: API not enabled, or no quota project set
+    documented: platform-level
+    api_specific: false
+    description: >-
+      The Marketing Platform Admin API is not enabled on the calling Cloud
+      project, or no quota project is set on the credentials. The quickstart
+      calls out that this API requires a quota project which is not set by
+      default.
+    remediation: >-
+      Enable marketingplatformadmin.googleapis.com on the project and set a
+      quota project on the credential.
+    retryable: false
+  - status: 404
+    grpc_status: NOT_FOUND
+    title: Resource not found
+    documented: platform-level
+    api_specific: false
+    description: >-
+      The named organization or analyticsAccountLink does not exist or is not
+      visible to the caller. Resource names are full relative names
+      (organizations/{organization}/analyticsAccountLinks/{link}); a bare id
+      will produce this.
+    retryable: false
+  - status: 400
+    grpc_status: INVALID_ARGUMENT
+    title: Invalid argument
+    documented: platform-level
+    api_specific: false
+    description: >-
+      A required field is missing or malformed — for example a
+      SetPropertyServiceLevelRequest without analytics_account_link or
+      service_level, both marked REQUIRED in the protos.
+    retryable: false
+  - status: 409
+    grpc_status: ALREADY_EXISTS
+    title: Link already exists
+    documented: platform-level
+    api_specific: false
+    description: >-
+      createAnalyticsAccountLink for an Analytics account already linked to the
+      organization. Relevant because this API publishes no idempotency key, so
+      a retried create is the realistic path to this error.
+    retryable: false
+  - status: 503
+    grpc_status: UNAVAILABLE
+    title: Service unavailable
+    documented: platform-level
+    api_specific: false
+    description: Transient backend unavailability.
+    remediation: >-
+      Retry with exponential backoff. UNAVAILABLE is one of only two codes in
+      the first-party gRPC retry policy (with UNKNOWN): maxAttempts 5,
+      initialBackoff 1s, maxBackoff 60s, multiplier 1.3.
+    retryable: true
+    source: grpc/google-marketing-platform-grpc-service-config.json
+  - status: 500
+    grpc_status: UNKNOWN
+    title: Unknown server error
+    documented: platform-level
+    api_specific: false
+    description: Unclassified backend failure.
+    remediation: Retryable per the first-party gRPC service config.
+    retryable: true
+    source: grpc/google-marketing-platform-grpc-service-config.json
+gaps:
+  - >-
+    The repo's OpenAPI declares zero 4xx/5xx responses across all five
+    operations. Adding real error responses to the published contract is the
+    single highest-value contract improvement available for this API, and is a
+    provider-side fix — this pipeline will not pad the spec.

@@ -1,0 +1,72 @@
+generated: '2026-08-13'
+method: searched
+source: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+versioning:
+  scheme: uri-path
+  current: v1alpha
+  stability: alpha
+  launch_stage: ALPHA
+  stability_statement: >-
+    "The Google Marketing Platform Admin API is in Alpha. Alpha is an unstable
+    early preview stage." — stated on the REST reference and the devguide
+    overview.
+  launch_stage_source: grpc/google-marketing-platform-service-config.yaml
+  docs: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  note: >-
+    The version is carried in the URI path (/v1alpha/...) and in the Discovery
+    Document version field. The live Discovery Document also carries a dated
+    revision — 20260813 as fetched on 2026-08-13 — which is the finest-grained
+    version signal this API publishes.
+  discovery_revision: '20260813'
+  discovery_document: https://marketingplatformadmin.googleapis.com/$discovery/rest?version=v1alpha
+deprecation:
+  policy_url: https://developers.google.com/terms
+  sunset_header: false
+  deprecation_header: false
+  covers_this_api: false
+  note: >-
+    Google publishes a deprecation policy in the Google APIs Terms of Service
+    (one year of continued operation and notice before a discontinuation or
+    backwards-incompatible change), but that commitment explicitly does NOT
+    extend to experimental, alpha or beta features. This API is at launch stage
+    ALPHA, so it is outside the covered set and Google makes no continuity
+    promise for it. No Sunset or Deprecation response headers (RFC 8594) are
+    documented. No deprecated operations exist in the current Discovery
+    Document or OpenAPI. Because the published policy does not cover this API,
+    no Deprecation pointer is wired into apis.yml — recording the policy
+    without the exclusion would credit a guarantee the provider has not made.
+  deprecated_operations: []
+announcements:
+  changelog: https://developers.google.com/marketing-platform/devguides/api/admin/v1/changelog
+  notify_group: Google Marketing Platform Admin API Notify Group
+  notify_group_note: >-
+    The provider directs users to subscribe to the GMP Admin API Notify Group
+    for official announcements; the group is the only push channel published
+    for breaking-change notice on this alpha API.
+  issue_tracker: https://issuetracker.google.com/issues/new?component=1603054
+  issue_tracker_source: grpc/google-marketing-platform-service-config.yaml
+status_page:
+  url: https://status.cloud.google.com/
+  note: >-
+    Google Cloud Service Health covers googleapis.com services. There is no
+    dedicated status page for marketingplatformadmin.googleapis.com, and the
+    Marketing Platform Admin API is not individually enumerated on the Cloud
+    status dashboard.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No SLA is published for this API. Alpha-stage Google APIs are excluded from
+    Google Cloud service level agreements.
+surface_currency:
+  openapi_operations: 5
+  discovery_methods: 8
+  note: >-
+    The repo's OpenAPI (openapi/google-marketing-platform-v1alpha-api-openapi.yml)
+    covers 5 of the 8 methods in the live Discovery Document. Missing:
+    organizations.get (added 2024-04-09), organizations.findSalesPartnerManagedClients
+    and organizations.reportPropertyUsage (both added 2025-10-29). The verbatim
+    Discovery Document saved at
+    openapi/google-marketing-platform-v1alpha-discovery.json is the complete
+    machine-readable contract; the protos in grpc/ are the other complete
+    first-party surface.

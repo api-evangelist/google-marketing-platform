@@ -1,0 +1,111 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Google Marketing Platform Admin V1alpha API
+  version: 1.0.0
+x-generated: '2026-08-13'
+x-method: generated
+x-source: >-
+  Enhancements derived from the provider's live Discovery Document (revision
+  20260813), the first-party protos in grpc/, and the published quotas and
+  changelog pages. Never mutates
+  openapi/google-marketing-platform-v1alpha-api-openapi.yml.
+extends: openapi/google-marketing-platform-v1alpha-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: google-marketing-platform
+      x-apievangelist-reviewed: '2026-08-13'
+      x-launch-stage: ALPHA
+      x-stability: >-
+        The Google Marketing Platform Admin API is in Alpha, an unstable early
+        preview stage. The Google APIs Terms of Service deprecation commitment
+        does not extend to alpha features.
+      x-discovery-document: https://marketingplatformadmin.googleapis.com/$discovery/rest?version=v1alpha
+      x-discovery-revision: '20260813'
+      x-proto-service: google.marketingplatform.admin.v1alpha.MarketingplatformAdminService
+      x-design-guide: https://google.aip.dev/
+      x-surface-completeness: >-
+        This document covers 5 of the 8 methods in the live Discovery Document.
+        organizations.get, organizations.reportPropertyUsage and
+        organizations.findSalesPartnerManagedClients are published by the
+        provider but absent here.
+  - target: $.info
+    update:
+      x-rate-limits:
+        source: https://developers.google.com/marketing-platform/devguides/api/admin/v1/quotas
+        requests_per_minute: 1200
+        requests_per_minute_per_user: 600
+        writes_per_minute: 300
+        writes_per_minute_per_user: 120
+        window_seconds: 60
+        status_on_exhaustion: 403
+        reason_on_exhaustion: rateLimitExceeded
+        headers: none
+      x-error-format:
+        style: google-json-error
+        rfc9457: false
+        branch_on: error.errors[].reason
+      x-idempotency:
+        supported: false
+        note: >-
+          No idempotency key. createAnalyticsAccountLink has no replay
+          protection.
+      x-quota-project-required: true
+  - target: $.servers[0]
+    update:
+      x-transport: [rest, grpc]
+      x-grpc-service-config: grpc/google-marketing-platform-grpc-service-config.json
+  - target: $.paths['/v1alpha/organizations'].get
+    update:
+      x-pagination:
+        style: page-token
+        request: [pageSize, pageToken]
+        response: nextPageToken
+      x-discovery-method: marketingplatformadmin.organizations.list
+      x-mutating: false
+  - target: $.paths['/v1alpha/{parent}/analyticsAccountLinks'].get
+    update:
+      x-pagination:
+        style: page-token
+        request: [pageSize, pageToken]
+        response: nextPageToken
+      x-discovery-method: marketingplatformadmin.organizations.analyticsAccountLinks.list
+      x-mutating: false
+      x-parent-format: organizations/{organization}
+  - target: $.paths['/v1alpha/{parent}/analyticsAccountLinks'].post
+    update:
+      x-discovery-method: marketingplatformadmin.organizations.analyticsAccountLinks.create
+      x-mutating: true
+      x-required-scope: https://www.googleapis.com/auth/marketingplatformadmin.analytics.update
+      x-idempotent: false
+      x-agent-guidance: >-
+        Not idempotent and not replay-protected. Before retrying a failed
+        create, list the organization's links and check whether the
+        analyticsAccount is already present.
+  - target: $.paths['/v1alpha/{name}'].delete
+    update:
+      x-discovery-method: marketingplatformadmin.organizations.analyticsAccountLinks.delete
+      x-mutating: true
+      x-destructive: true
+      x-required-scope: https://www.googleapis.com/auth/marketingplatformadmin.analytics.update
+      x-name-format: organizations/{organization}/analyticsAccountLinks/{analytics_account_link}
+  - target: $.paths['/v1alpha/{analyticsAccountLink}:setPropertyServiceLevel'].post
+    update:
+      x-discovery-method: marketingplatformadmin.organizations.analyticsAccountLinks.setPropertyServiceLevel
+      x-mutating: true
+      x-required-scope: https://www.googleapis.com/auth/marketingplatformadmin.analytics.update
+      x-commercial-consequence: >-
+        Moves an Analytics property between ANALYTICS_SERVICE_LEVEL_STANDARD
+        and the paid ANALYTICS_SERVICE_LEVEL_360. Treat as human-in-the-loop.
+  - target: $.components.schemas.AnalyticsAccountLink
+    update:
+      x-resource-type: marketingplatformadmin.googleapis.com/AnalyticsAccountLink
+      x-name-pattern: organizations/{organization}/analyticsAccountLinks/{analytics_account_link}
+      x-cross-service-reference:
+        field: analyticsAccount
+        type: analyticsadmin.googleapis.com/Account
+        pattern: accounts/{account}
+  - target: $.components.schemas.Organization
+    update:
+      x-resource-type: marketingplatformadmin.googleapis.com/Organization
+      x-name-pattern: organizations/{organization}

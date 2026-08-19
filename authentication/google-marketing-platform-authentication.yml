@@ -1,18 +1,101 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/openapi.yml
+generated: '2026-08-13'
+method: searched
+source: openapi/google-marketing-platform-v1alpha-api-openapi.yml
+docs: https://developers.google.com/marketing-platform/devguides/api/admin/v1/quickstart
+also_source:
+  - openapi/google-marketing-platform-v1alpha-discovery.json
+  - grpc/google-marketing-platform-service-config.yaml
+  - well-known/google-marketing-platform-openid-configuration.json
+note: >-
+  Upgraded from the derived pass with the provider's quickstart and the
+  first-party service config. The derived file captured the oauth2 scheme
+  correctly but missed the two things that actually break a first call: the
+  mandatory Cloud quota project, and the fact that scope failures and quota
+  failures share HTTP 403.
 summary:
-  types:
-  - oauth2
-  oauth2_flows:
-  - authorizationCode
+  types: [oauth2]
+  api_key_supported: false
+  api_key_in: []
+  oauth2_flows: [authorizationCode]
+  application_default_credentials: true
+  mutual_tls: false
+  service_accounts: supported
 schemes:
-- name: oauth2
-  type: oauth2
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    tokenUrl: https://oauth2.googleapis.com/token
-    scopes: 2
-  sources:
-  - openapi/openapi.yml
+  - name: oauth2
+    type: oauth2
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://accounts.google.com/o/oauth2/auth
+        tokenUrl: https://oauth2.googleapis.com/token
+        scopes: 2
+    sources:
+      - openapi/google-marketing-platform-v1alpha-api-openapi.yml
+      - openapi/google-marketing-platform-v1alpha-discovery.json
+    canonical_scopes_source: grpc/google-marketing-platform-service-config.yaml
+authorization_server:
+  issuer: https://accounts.google.com
+  discovery: https://accounts.google.com/.well-known/openid-configuration
+  discovery_status: 200
+  discovery_checked: '2026-08-13'
+  authorization_endpoint: https://accounts.google.com/o/oauth2/v2/auth
+  token_endpoint: https://oauth2.googleapis.com/token
+  saved_copy: well-known/google-marketing-platform-openid-configuration.json
+  note: >-
+    The API host itself serves no /.well-known/openid-configuration or
+    /.well-known/oauth-authorization-server (both 404). Discovery lives on
+    accounts.google.com, the shared Google authorization server.
+credentials:
+  - kind: oauth-user
+    description: >-
+      Three-legged OAuth as a user who has access to the GMP organization. This
+      is the path the quickstart takes.
+    header: 'Authorization: Bearer <access_token>'
+  - kind: application-default-credentials
+    description: >-
+      Local ADC via gcloud. The quickstart's exact command:
+      gcloud auth application-default login
+      --scopes="https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/marketingplatformadmin.analytics.read"
+    header: 'Authorization: Bearer $(gcloud auth application-default print-access-token)'
+  - kind: service-account
+    description: >-
+      Supported through the standard Google auth libraries the GAPIC clients
+      depend on. The service account must itself be granted access to the GMP
+      organization; the API documents no domain-wide-delegation path of its own.
+api_key: false
+api_key_note: >-
+  This API accepts no API key for authentication. The Discovery Document
+  declares the standard `key` system parameter on every method, but that is
+  Google's project-identification parameter and does not authenticate a call
+  to this service.
+required_setup:
+  - step: Enable the API
+    detail: >-
+      marketingplatformadmin.googleapis.com must be enabled on the calling
+      Google Cloud project.
+  - step: Set a quota project
+    detail: >-
+      "The Google Marketing Platform Admin API requires a quota project, which
+      is not set by default." Without it, correctly scoped credentials still
+      fail. This is the most common first-call failure on this API.
+    source: https://developers.google.com/marketing-platform/devguides/api/admin/v1/quickstart
+  - step: Grant organization access
+    detail: >-
+      The authenticated principal must have access to the target GMP
+      organization; scopes alone do not grant it.
+scopes_detail: scopes/google-marketing-platform-scopes.yml
+failure_modes:
+  - status: 401
+    grpc_status: UNAUTHENTICATED
+    cause: Missing, expired or malformed access token.
+  - status: 403
+    grpc_status: PERMISSION_DENIED
+    cause: >-
+      Wrong scope, no access to the organization, API not enabled, or no quota
+      project set.
+  - status: 403
+    grpc_status: RESOURCE_EXHAUSTED
+    reason: rateLimitExceeded
+    cause: >-
+      Quota, NOT authentication. Shares the 403 status with the genuine auth
+      failures above — branch on error.errors[].reason before deciding a
+      credential is bad.

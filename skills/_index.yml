@@ -1,0 +1,25 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  Authored from openapi/google-marketing-platform-v1alpha-api-openapi.yml with
+  every operationId verified verbatim in the spec, plus the conventions/,
+  errors/, rate-limits/ and data-model/ artifacts in this repo. The provider
+  publishes no skills or AGENTS.md of its own; searched developers.google.com
+  and the googleapis GitHub organization on 2026-08-13.
+skills:
+  - file: google-marketing-platform-link-analytics-account.md
+    name: Link a Google Analytics account to a GMP organization
+    api: openapi/google-marketing-platform-v1alpha-api-openapi.yml
+    operations: [listOrganizations, listAnalyticsAccountLinks, createAnalyticsAccountLink]
+    mutating: true
+  - file: google-marketing-platform-set-property-service-level.md
+    name: Set an Analytics property service level
+    api: openapi/google-marketing-platform-v1alpha-api-openapi.yml
+    operations: [listOrganizations, listAnalyticsAccountLinks, setPropertyServiceLevel]
+    mutating: true
+    human_in_the_loop: true
+  - file: google-marketing-platform-audit-organization-links.md
+    name: Audit GMP organizations and their Analytics account links
+    api: openapi/google-marketing-platform-v1alpha-api-openapi.yml
+    operations: [listOrganizations, listAnalyticsAccountLinks]
+    mutating: false

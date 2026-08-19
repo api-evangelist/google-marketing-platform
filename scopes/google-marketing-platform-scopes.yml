@@ -1,23 +1,75 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/openapi.yml
+generated: '2026-08-13'
+method: searched
+source: https://marketingplatformadmin.googleapis.com/$discovery/rest?version=v1alpha
+docs: https://developers.google.com/marketing-platform/devguides/api/admin/v1/quickstart
+also_source:
+  - grpc/google-marketing-platform-service-config.yaml
+  - openapi/google-marketing-platform-v1alpha-api-openapi.yml
+note: >-
+  Scope descriptions are the provider's own, read verbatim from the live
+  Discovery Document (revision 20260813) auth.oauth2.scopes block. The
+  per-method scope requirements come from the first-party service config
+  published with the protos, which is more precise than the Discovery Document
+  — Discovery lists both scopes as acceptable on read methods, while the
+  service config pins the three write methods to the update scope alone.
+  Upgraded from the derived pass, which had only spec-inferred descriptions.
 schemes:
-- name: oauth2
-  source: openapi/openapi.yml
-  flows:
-  - flow: authorizationCode
-    authorizationUrl: https://accounts.google.com/o/oauth2/auth
-    tokenUrl: https://oauth2.googleapis.com/token
+  - name: oauth2
+    type: oauth2
+    source: openapi/google-marketing-platform-v1alpha-api-openapi.yml
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://accounts.google.com/o/oauth2/auth
+        tokenUrl: https://oauth2.googleapis.com/token
+    note: >-
+      accounts.google.com/.well-known/openid-configuration (saved to
+      well-known/) advertises the v2 authorization endpoint
+      https://accounts.google.com/o/oauth2/v2/auth and the same token endpoint.
+scope_count: 2
 scopes:
-- scope: https://www.googleapis.com/auth/marketingplatformadmin.analytics.read
-  description: View Analytics links
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/openapi.yml
-- scope: https://www.googleapis.com/auth/marketingplatformadmin.analytics.update
-  description: Manage Analytics links
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/openapi.yml
+  - scope: https://www.googleapis.com/auth/marketingplatformadmin.analytics.read
+    description: View your Google Analytics product account data in GMP home
+    description_source: Discovery Document auth.oauth2.scopes (verbatim)
+    access: read
+    flows: [authorizationCode]
+    sources:
+      - openapi/google-marketing-platform-v1alpha-discovery.json
+      - openapi/google-marketing-platform-v1alpha-api-openapi.yml
+    grants:
+      - marketingplatformadmin.organizations.list
+      - marketingplatformadmin.organizations.get
+      - marketingplatformadmin.organizations.findSalesPartnerManagedClients
+      - marketingplatformadmin.organizations.reportPropertyUsage
+      - marketingplatformadmin.organizations.analyticsAccountLinks.list
+  - scope: https://www.googleapis.com/auth/marketingplatformadmin.analytics.update
+    description: Manage your Google Analytics product account data in GMP home
+    description_source: Discovery Document auth.oauth2.scopes (verbatim)
+    access: write
+    flows: [authorizationCode]
+    sources:
+      - openapi/google-marketing-platform-v1alpha-discovery.json
+      - openapi/google-marketing-platform-v1alpha-api-openapi.yml
+    grants:
+      - marketingplatformadmin.organizations.analyticsAccountLinks.create
+      - marketingplatformadmin.organizations.analyticsAccountLinks.delete
+      - marketingplatformadmin.organizations.analyticsAccountLinks.setPropertyServiceLevel
+    note: >-
+      Also accepted on every read method, so a token holding only this scope
+      can do everything. There is no read-only-plus-one-write intermediate.
+adjacent_scopes:
+  - scope: https://www.googleapis.com/auth/cloud-platform
+    required: false
+    note: >-
+      The quickstart's gcloud ADC command requests cloud-platform alongside the
+      analytics.read scope. It is needed for the Cloud project / quota-project
+      plumbing around the call, not by the API's own authentication rules —
+      the service config's canonical_scopes list does not include it.
+    source: https://developers.google.com/marketing-platform/devguides/api/admin/v1/quickstart
+caveats:
+  - >-
+    A Cloud quota project is required on the credential and is not set by
+    default. Holding the right scope is necessary but not sufficient.
+  - >-
+    Scope failures and quota failures both surface as HTTP 403. Distinguish
+    them by error.errors[].reason — rateLimitExceeded is quota, anything else
+    is authorization.

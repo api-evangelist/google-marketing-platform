@@ -1,0 +1,118 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/google-marketing-platform-v1alpha-discovery.json
+also_derived_from:
+  - grpc/google-marketing-platform-resources.proto
+  - grpc/google-marketing-platform-marketingplatform-admin.proto
+note: >-
+  Derived from the live first-party Discovery Document (revision 20260813) and
+  the published protos, not from the repo's OpenAPI — the OpenAPI covers only
+  5 of 8 methods and 6 of 16 schemas, so deriving from it would have dropped
+  the entire usage/billing half of the model.
+identifier_style: aip-122-relative-resource-names
+entities:
+  - name: Organization
+    resource_type: marketingplatformadmin.googleapis.com/Organization
+    name_pattern: organizations/{organization}
+    root: true
+    fields:
+      - {name: name, type: string, note: 'Identifier. Format: organizations/{org_id}'}
+      - {name: displayName, type: string, note: Human-readable organization name.}
+    operations: [listOrganizations, getOrganization, findSalesPartnerManagedClients, reportPropertyUsage]
+  - name: AnalyticsAccountLink
+    resource_type: marketingplatformadmin.googleapis.com/AnalyticsAccountLink
+    name_pattern: organizations/{organization}/analyticsAccountLinks/{analytics_account_link}
+    fields:
+      - {name: name, type: string, note: Identifier, output-only in practice.}
+      - {name: displayName, type: string, note: Output only. Display name of the linked Analytics account.}
+      - {name: analyticsAccount, type: string, note: 'Immutable cross-service reference: accounts/{account} in analyticsadmin.googleapis.com'}
+      - {name: linkVerificationState, type: enum, enum_ref: LinkVerificationState}
+    operations: [listAnalyticsAccountLinks, createAnalyticsAccountLink, deleteAnalyticsAccountLink, setPropertyServiceLevel]
+  - name: PropertyUsage
+    resource_type: null
+    embedded: true
+    note: Value object returned by reportPropertyUsage; not addressable by resource name.
+    fields:
+      - {name: property, type: string}
+      - {name: displayName, type: string}
+      - {name: accountId, type: string}
+      - {name: propertyType, type: enum, enum_ref: AnalyticsPropertyType}
+      - {name: serviceLevel, type: enum, enum_ref: AnalyticsServiceLevel}
+      - {name: totalEventCount, type: integer}
+      - {name: billableEventCount, type: integer}
+  - name: BillInfo
+    embedded: true
+    note: Billing roll-up returned alongside property usage.
+    fields:
+      - {name: baseFee, type: Money}
+      - {name: eventFee, type: Money}
+      - {name: priceProtectionCredit, type: Money}
+      - {name: total, type: Money}
+  - name: Money
+    embedded: true
+    note: Standard google.type.Money (currencyCode, units, nanos).
+  - name: ClientData
+    embedded: true
+    note: Sales-partner managed client record.
+    fields:
+      - {name: organization, type: string, note: Reference to an Organization resource name.}
+      - {name: startDate, type: Date}
+      - {name: endDate, type: Date}
+  - name: Date
+    embedded: true
+    note: Standard google.type.Date (year, month, day).
+relationships:
+  - from: Organization
+    to: AnalyticsAccountLink
+    kind: has_many
+    via: parent
+    note: >-
+      Links are nested under the organization in the resource name and listed
+      with parent=organizations/{org_id}.
+  - from: AnalyticsAccountLink
+    to: Organization
+    kind: belongs_to
+    via: name-prefix
+  - from: AnalyticsAccountLink
+    to: 'analyticsadmin.googleapis.com/Account'
+    kind: has_one
+    via: analyticsAccount
+    external: true
+    note: >-
+      Cross-service reference into the Google Analytics Admin API. This is the
+      seam the whole API exists to manage, and it is the only relationship that
+      leaves this service's own namespace.
+  - from: Organization
+    to: PropertyUsage
+    kind: has_many
+    via: reportPropertyUsage
+    note: Computed, not stored; returned per call rather than addressable.
+  - from: PropertyUsage
+    to: BillInfo
+    kind: has_one
+    via: response-envelope
+    note: >-
+      ReportPropertyUsageResponse carries both the per-property usage rows and
+      the aggregate BillInfo.
+  - from: Organization
+    to: ClientData
+    kind: has_many
+    via: findSalesPartnerManagedClients
+    note: Only populated for organizations acting as a sales partner.
+enums:
+  - name: LinkVerificationState
+    values: [LINK_VERIFICATION_STATE_UNSPECIFIED, LINK_VERIFICATION_STATE_VERIFIED, LINK_VERIFICATION_STATE_NOT_VERIFIED]
+    source: grpc/google-marketing-platform-resources.proto
+  - name: AnalyticsServiceLevel
+    values: [ANALYTICS_SERVICE_LEVEL_UNSPECIFIED, ANALYTICS_SERVICE_LEVEL_STANDARD, ANALYTICS_SERVICE_LEVEL_360]
+    source: grpc/google-marketing-platform-resources.proto
+    note: >-
+      The value set on setPropertyServiceLevel; moving a property to the 360
+      level is the commercially significant mutation this API exposes.
+  - name: AnalyticsPropertyType
+    values: [ANALYTICS_PROPERTY_TYPE_UNSPECIFIED, ANALYTICS_PROPERTY_TYPE_ORDINARY, ANALYTICS_PROPERTY_TYPE_SUBPROPERTY, ANALYTICS_PROPERTY_TYPE_ROLLUP]
+    source: grpc/google-marketing-platform-resources.proto
+counts:
+  entities: 7
+  relationships: 6
+  enums: 3

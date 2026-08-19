@@ -3,8 +3,11 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Google Marketing Platform Admin
 providerId: google-marketing-platform
+generated: '2026-08-13'
+method: searched
+source: https://developers.google.com/marketing-platform/devguides/api/admin/v1/quotas
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
 tags:
   - Analytics
   - Google Marketing Platform
@@ -14,76 +17,101 @@ tags:
   - Rate Limiting
   - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the Google Marketing Platform Admin API surface.
-  Captures per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold
-  values to be replaced with published provider limits.
+description: >-
+  Published rate limits for the Google Marketing Platform Admin API, read from
+  the provider's own "Limits and Quotas on API Requests" page on 2026-08-13.
+  This file REPLACES a 2026-05-04 bulk-sweep scaffold that carried invented
+  tier limits (10/100/1000 rpm, X-RateLimit-* headers) which the provider does
+  not publish and does not return. Quotas are enforced per Google Cloud
+  project, refilled automatically every 60 seconds, and are visible per project
+  in the Cloud console at
+  https://console.cloud.google.com/apis/api/marketingplatformadmin.googleapis.com/quotas
+limit_count: 4
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  note: >-
+    The provider documents no rate-limit response headers for this API. Google
+    API exhaustion is signalled in the error body, not in RateLimit-* or
+    X-RateLimit-* headers, and no Retry-After is documented. An agent must read
+    error.errors[].reason == rateLimitExceeded from the JSON error envelope
+    rather than a header. Recorded as an honest absence, not a guess.
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
 responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+  throttled: 403
+  throttled_reason: rateLimitExceeded
+  note: >-
+    Google returns HTTP 403 with reason rateLimitExceeded on quota exhaustion
+    for this API, not the more common 429. This is documented explicitly on the
+    quotas page and is a real interoperability trap for agents that treat 403
+    as a permanent authorization failure and stop retrying.
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
+  - name: Requests per minute
+    scope: project
     metric: requests_per_minute
-    limit: 10
-    burst: 20
+    limit: 1200
     timeFrame: minute
+    window_seconds: 60
     applies:
       - Google Marketing Platform Admin API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Google Marketing Platform Admin API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
+    note: Consumed by every request, read or write.
+  - name: Requests per minute per user
+    scope: project-per-user
     metric: requests_per_minute
-    limit: 100
-    burst: 200
+    limit: 600
     timeFrame: minute
+    window_seconds: 60
     applies:
       - Google Marketing Platform Admin API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
+    note: Consumed by every request, read or write, counted per end user.
+  - name: Writes per minute
+    scope: project
+    metric: writes_per_minute
+    limit: 300
+    timeFrame: minute
+    window_seconds: 60
     applies:
       - Google Marketing Platform Admin API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
+    note: >-
+      Consumed in addition to the requests quotas by create, patch, delete,
+      archive and update methods. For this API that is
+      createAnalyticsAccountLink, deleteAnalyticsAccountLink and
+      setPropertyServiceLevel.
+  - name: Writes per minute per user
+    scope: project-per-user
+    metric: writes_per_minute
+    limit: 120
     timeFrame: minute
+    window_seconds: 60
     applies:
       - Google Marketing Platform Admin API
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Refill interval
+    description: >-
+      Rate limits are enforced and automatically refilled in 60-second
+      intervals. On rateLimitExceeded the documented guidance is to wait a
+      minute and retry; the quota is refilled at the start of the next
+      interval.
+  - name: No daily quota
+    description: >-
+      The provider states there is currently no explicit daily usage quota for
+      this API; the maximum number of daily requests is naturally bounded by
+      the per-minute limits.
+  - name: Per-user capping
+    description: >-
+      Per-user limits can be managed through the Google Cloud "Capping API
+      usage" feature.
+    url: https://cloud.google.com/apis/docs/capping-api-usage
+  - name: gRPC client retry policy
+    description: >-
+      The first-party gRPC service config published with the protos sets a
+      60s timeout and a retry policy of maxAttempts 5, initialBackoff 1s,
+      maxBackoff 60s, backoffMultiplier 1.3, retrying only UNAVAILABLE and
+      UNKNOWN. RESOURCE_EXHAUSTED / rateLimitExceeded is NOT in the retryable
+      set, so the generated clients will not retry a quota error for you.
+    source: grpc/google-marketing-platform-grpc-service-config.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

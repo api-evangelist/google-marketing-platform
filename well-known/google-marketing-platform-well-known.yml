@@ -1,0 +1,77 @@
+generated: '2026-08-13'
+method: probed
+source: live GET of /.well-known/* on every apis.yml host and OpenAPI servers[] host
+note: >-
+  The API host itself (marketingplatformadmin.googleapis.com) serves NO
+  /.well-known/ documents — every path returned 404. The two real documents
+  recorded here are served by other Google hosts that this API genuinely
+  depends on: www.google.com serves the corporate RFC 9116 security.txt that
+  covers google.com properties, and accounts.google.com serves the OIDC
+  discovery document for the authorization server this API's OAuth 2.0 flow
+  actually uses (the OpenAPI oauth2 scheme points at
+  accounts.google.com/o/oauth2/auth and oauth2.googleapis.com/token). Neither
+  host is the API host, and that is recorded as such rather than being folded
+  into a single misleading "provider serves well-known" claim.
+hosts:
+  - host: https://marketingplatformadmin.googleapis.com
+    role: api
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://developers.google.com
+    role: documentation
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://marketingplatform.google.com
+    role: portal
+    documents:
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://www.google.com
+    role: corporate
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: google-marketing-platform-security.txt
+        spec: RFC 9116
+        content_type: text/plain
+  - host: https://accounts.google.com
+    role: authorization-server
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 200
+        file: google-marketing-platform-openid-configuration.json
+        spec: OpenID Connect Discovery 1.0
+        content_type: application/json
+        issuer: https://accounts.google.com
+        authorization_endpoint: https://accounts.google.com/o/oauth2/v2/auth
+        token_endpoint: https://oauth2.googleapis.com/token
+summary:
+  paths_probed: 25
+  documents_found: 2
+  api_host_documents_found: 0
