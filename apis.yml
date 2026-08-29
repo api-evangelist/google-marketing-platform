@@ -4,6 +4,18 @@ description: The Google Marketing Platform Admin API provides programmatic acces
   to manage links between Google Marketing Platform organizations and Google Analytics
   accounts. It enables creating, updating, deleting, and listing organization links
   and managing service levels for integrated marketing analytics.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
