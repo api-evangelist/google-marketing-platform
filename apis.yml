@@ -78,6 +78,8 @@ apis:
   - type: Postman
     url: postman/google-marketing-platform-v1alpha-api.postman_collection.json
 common:
+- type: Website
+  url: https://www.google.com/
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/google-marketing-platform-admin/overview
 - type: AgenticAccess
@@ -211,3 +213,5 @@ x-enrichment:
   status: enriched
   artifacts_added: 23
   pass: local-v1
+x-parent: google
+x-relationship: product

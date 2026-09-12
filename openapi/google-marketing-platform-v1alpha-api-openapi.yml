@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google Marketing Platform Admin V1alpha API
   description: The Google Marketing Platform Admin API provides programmatic access to manage links between Google Marketing Platform organizations and Google Analytics accounts, including service level management.
@@ -162,42 +162,8 @@ components:
         nextPageToken:
           type: string
           example: example_value
-    ListAnalyticsAccountLinksResponse:
+    SetPropertyServiceLevelResponse:
       type: object
-      properties:
-        analyticsAccountLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnalyticsAccountLink'
-          example: []
-        nextPageToken:
-          type: string
-          example: example_value
-    Organization:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Resource name of the organization.
-          example: Example Title
-        displayName:
-          type: string
-          description: The display name of the organization.
-          example: example_value
-    SetPropertyServiceLevelRequest:
-      type: object
-      properties:
-        analyticsProperty:
-          type: string
-          description: The Analytics property resource name.
-          example: example_value
-        serviceLevel:
-          type: string
-          enum:
-          - ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
-          - ANALYTICS_SERVICE_LEVEL_STANDARD
-          - ANALYTICS_SERVICE_LEVEL_360
-          example: ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
     AnalyticsAccountLink:
       type: object
       properties:
@@ -220,8 +186,42 @@ components:
           - LINK_VERIFICATION_STATE_VERIFIED
           - LINK_VERIFICATION_STATE_NOT_VERIFIED
           example: LINK_VERIFICATION_STATE_UNSPECIFIED
-    SetPropertyServiceLevelResponse:
+    Organization:
       type: object
+      properties:
+        name:
+          type: string
+          description: Resource name of the organization.
+          example: Example Title
+        displayName:
+          type: string
+          description: The display name of the organization.
+          example: example_value
+    ListAnalyticsAccountLinksResponse:
+      type: object
+      properties:
+        analyticsAccountLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalyticsAccountLink'
+          example: []
+        nextPageToken:
+          type: string
+          example: example_value
+    SetPropertyServiceLevelRequest:
+      type: object
+      properties:
+        analyticsProperty:
+          type: string
+          description: The Analytics property resource name.
+          example: example_value
+        serviceLevel:
+          type: string
+          enum:
+          - ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
+          - ANALYTICS_SERVICE_LEVEL_STANDARD
+          - ANALYTICS_SERVICE_LEVEL_360
+          example: ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
   securitySchemes:
     oauth2:
       type: oauth2
