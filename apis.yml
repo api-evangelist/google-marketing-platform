@@ -63,8 +63,6 @@ apis:
     url: json-schema/json-schema.yml
   - type: JSONLD
     url: json-ld/json-ld.yml
-  - type: GraphQL
-    url: graphql/google-marketing-platform-graphql.md
   - type: DiscoveryDocument
     url: openapi/google-marketing-platform-v1alpha-discovery.json
   - type: Protobuf
