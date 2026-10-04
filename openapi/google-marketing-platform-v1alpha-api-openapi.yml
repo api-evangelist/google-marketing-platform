@@ -151,6 +151,33 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SetPropertyServiceLevelResponse:
+      type: object
+    SetPropertyServiceLevelRequest:
+      type: object
+      properties:
+        analyticsProperty:
+          type: string
+          description: The Analytics property resource name.
+          example: example_value
+        serviceLevel:
+          type: string
+          enum:
+          - ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
+          - ANALYTICS_SERVICE_LEVEL_STANDARD
+          - ANALYTICS_SERVICE_LEVEL_360
+          example: ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
+    Organization:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Resource name of the organization.
+          example: Example Title
+        displayName:
+          type: string
+          description: The display name of the organization.
+          example: example_value
     ListOrganizationsResponse:
       type: object
       properties:
@@ -184,8 +211,6 @@ components:
           - LINK_VERIFICATION_STATE_VERIFIED
           - LINK_VERIFICATION_STATE_NOT_VERIFIED
           example: LINK_VERIFICATION_STATE_UNSPECIFIED
-    SetPropertyServiceLevelResponse:
-      type: object
     ListAnalyticsAccountLinksResponse:
       type: object
       properties:
@@ -196,31 +221,6 @@ components:
           example: []
         nextPageToken:
           type: string
-          example: example_value
-    SetPropertyServiceLevelRequest:
-      type: object
-      properties:
-        analyticsProperty:
-          type: string
-          description: The Analytics property resource name.
-          example: example_value
-        serviceLevel:
-          type: string
-          enum:
-          - ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
-          - ANALYTICS_SERVICE_LEVEL_STANDARD
-          - ANALYTICS_SERVICE_LEVEL_360
-          example: ANALYTICS_SERVICE_LEVEL_UNSPECIFIED
-    Organization:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Resource name of the organization.
-          example: Example Title
-        displayName:
-          type: string
-          description: The display name of the organization.
           example: example_value
   securitySchemes:
     oauth2:
