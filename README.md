@@ -1,4 +1,4 @@
-# Google Marketing Platform Admin (google-marketing-platform)
+# Google Marketing Platform Admin
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,71 +66,205 @@
 
 The Google Marketing Platform Admin API provides programmatic access to manage links between Google Marketing Platform organizations and Google Analytics accounts. It enables creating, updating, deleting, and listing organization links and managing service levels for integrated marketing analytics.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/google-marketing-platform/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/google-marketing-platform/refs/heads/main/apis.yml)
+**Areas:** Analytics · Google Marketing Platform · Marketing · Organization Management · Platform Administration
 
-## Scope
+## Google Marketing Platform Admin on APIs.io
 
-- **Type:** Index
-- **Access:** 3rd-Party
+Everything profiled for Google Marketing Platform Admin is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/google-marketing-platform/](https://apis.io/providers/google-marketing-platform/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (1)
 
-- Analytics
-- Google Marketing Platform
-- Marketing
-- Organization Management
-- Platform Administration
+- [Google Marketing Platform Admin V1alpha API](https://apis.io/apis/google-marketing-platform/google-marketing-platform-v1alpha-api/) — The V1alpha API from Google Marketing Platform Admin — 4 operation(s) for v1alpha.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-13
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### GraphQL (1)
 
-### Google Marketing Platform Admin API
+GraphQL schemas.
 
-The Marketing Platform Admin API enables programmatic management of organization-level settings including links to Google Analytics accounts, service level configuration, and organization administration.
+- [Moved to /providers/google-marketing-platform/](https://apis.io/graphqls/google-marketing-platform/google-marketing-platform-graphql/)
 
-- **Human URL:** [https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest](https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest)
-- **Base URL:** `https://marketingplatformadmin.googleapis.com`
+#### MCP servers (1)
 
-#### Tags
+Model Context Protocol servers that expose the API to agents.
 
-- Admin
-- Analytics
-- Organizations
+- [google-marketing-platform-admin](https://apis.io/servers/google-marketing-platform/google-marketing-platform-admin/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest)
-- [OpenAPI](openapi/openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Authentication](https://developers.google.com/docs/api/how-tos/authorizing)
-- [Getting Started](https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest)
-- [JSON Schema](json-schema/json-schema.yml) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/json-ld.yml) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Common Properties
+- [Google Marketing Platform Agentic Access](https://apis.io/agentic-access/google-marketing-platform/google-marketing-platform-agentic-access/)
 
-- [GitHub Organization](https://github.com/google-marketing-solutions)
-- [LinkedIn](https://www.linkedin.com/showcase/googlemarketingplatform)
-- [Portal](https://marketingplatform.google.com)
-- [Getting Started](https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest)
+#### JSON Schema (6)
+
+The data models the API reads and writes.
+
+- [AnalyticsAccountLink](https://apis.io/schemas/google-marketing-platform/openapi-analytics-account-link/)
+- [ListAnalyticsAccountLinksResponse](https://apis.io/schemas/google-marketing-platform/openapi-list-analytics-account-links-response/)
+- [ListOrganizationsResponse](https://apis.io/schemas/google-marketing-platform/openapi-list-organizations-response/)
+- [Organization](https://apis.io/schemas/google-marketing-platform/openapi-organization/)
+- [SetPropertyServiceLevelRequest](https://apis.io/schemas/google-marketing-platform/openapi-set-property-service-level-request/)
+- [SetPropertyServiceLevelResponse](https://apis.io/schemas/google-marketing-platform/openapi-set-property-service-level-response/)
+
+#### JSON Structure (6)
+
+Data models expressed in JSON Structure.
+
+- [Openapi Analytics Account Link Structure](https://apis.io/json-structure/google-marketing-platform/openapi-analytics-account-link-structure/)
+- [Openapi List Analytics Account Links Response Structure](https://apis.io/json-structure/google-marketing-platform/openapi-list-analytics-account-links-response-structure/)
+- [Openapi List Organizations Response Structure](https://apis.io/json-structure/google-marketing-platform/openapi-list-organizations-response-structure/)
+- [Openapi Organization Structure](https://apis.io/json-structure/google-marketing-platform/openapi-organization-structure/)
+- [Openapi Set Property Service Level Request Structure](https://apis.io/json-structure/google-marketing-platform/openapi-set-property-service-level-request-structure/)
+- [Openapi Set Property Service Level Response Structure](https://apis.io/json-structure/google-marketing-platform/openapi-set-property-service-level-response-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Openapi Context](https://apis.io/jsonld/google-marketing-platform/openapi-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [google-marketing-platform API Vocabulary](https://apis.io/vocabularies/google-marketing-platform/google-marketing-platform-vocabulary/)
+
+#### Examples (6)
+
+Example requests and responses.
+
+- [Openapi Analytics Account Link Example](https://apis.io/examples/google-marketing-platform/openapi-analytics-account-link-example/)
+- [Openapi List Analytics Account Links Response Example](https://apis.io/examples/google-marketing-platform/openapi-list-analytics-account-links-response-example/)
+- [Openapi List Organizations Response Example](https://apis.io/examples/google-marketing-platform/openapi-list-organizations-response-example/)
+- [Openapi Organization Example](https://apis.io/examples/google-marketing-platform/openapi-organization-example/)
+- [Openapi Set Property Service Level Request Example](https://apis.io/examples/google-marketing-platform/openapi-set-property-service-level-request-example/)
+- [Openapi Set Property Service Level Response Example](https://apis.io/examples/google-marketing-platform/openapi-set-property-service-level-response-example/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Google Marketing Platform Admin V1alpha API](https://apis.io/collections/google-marketing-platform/open-google-marketing-platform-v1alpha-api/)
+- [Google Marketing Platform Admin API](https://apis.io/collections/google-marketing-platform/open-openapi/)
+- [Google Marketing Platform Admin V1alpha API](https://apis.io/collections/google-marketing-platform/postman-google-marketing-platform-v1alpha-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Google Marketing Platform V1Alpha Api Overlay](https://apis.io/overlays/google-marketing-platform/google-marketing-platform-v1alpha-api-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Google Marketing Platform Admin — jsonschema rules](https://apis.io/rules/google-marketing-platform/google-marketing-platform-jsonschema-spectral-rules/)
+- [Google Marketing Platform Admin API Rules](https://apis.io/rules/google-marketing-platform/google-marketing-platform-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Google Marketing Platform Authentication](https://apis.io/security/google-marketing-platform/google-marketing-platform-authentication/)
+- [Google Marketing Platform Domain Security](https://apis.io/security/google-marketing-platform/google-marketing-platform-domain-security/)
+- [Google Marketing Platform Vulnerability Disclosure](https://apis.io/security/google-marketing-platform/google-marketing-platform-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Google Marketing Platform Scopes](https://apis.io/scopes/google-marketing-platform/google-marketing-platform-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Google Marketing Platform Plans Pricing](https://apis.io/plans/google-marketing-platform/google-marketing-platform-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Google Marketing Platform Rate Limits](https://apis.io/rate-limits/google-marketing-platform/google-marketing-platform-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Google Marketing Platform Finops](https://apis.io/finops/google-marketing-platform/google-marketing-platform-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.google.com/)
 - [Documentation](https://developers.google.com/marketing-platform)
-- [Authentication](https://developers.google.com/docs/api/how-tos/authorizing)
+- [Getting started](https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest)
+- [API reference](https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest)
 - [Pricing](https://marketingplatform.google.com/about/)
-- [Terms of Service](https://developers.google.com/terms)
-- [Privacy Policy](https://policies.google.com/privacy)
-- [Status Page](https://status.cloud.google.com/)
 - [Support](https://developers.google.com/marketing-platform/support)
-- [JSON-LD](json-ld/json-ld.yml) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Changelog](https://developers.google.com/marketing-platform/devguides/api/admin/v1/changelog)
+- [Blog](https://blog.google/products/marketingplatform/rss/)
+- [Security](https://g.co/vrp)
+- [Terms of service](https://developers.google.com/terms)
+- [Privacy policy](https://policies.google.com/privacy)
+- [GitHub](https://github.com/google-marketing-solutions)
+- [Status](https://status.cloud.google.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 56.4** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 57.9 |
+| Contract governance | 18.2 |
+| Operational transparency | 76.3 |
+| Developer ergonomics | 62.5 |
+| Access clarity | 38.2 |
+
+**Agent readiness 33.3** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 40.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/google-marketing-platform/](https://apis.io/providers/google-marketing-platform/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Google Marketing Platform Admin: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/google-marketing-platform/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
