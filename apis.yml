@@ -1,0 +1,317 @@
+aid: google-marketing-platform
+name: Google Marketing Platform Admin
+description: The Google Marketing Platform Admin API provides programmatic access to manage links between Google Marketing Platform organizations
+  and Google Analytics accounts. It enables creating, updating, deleting, and listing organization links and managing service levels for integrated
+  marketing analytics.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
+accessModel:
+  pricing: unknown
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Requires approval
+  confidence: medium
+  source:
+  - authentication
+  - scopes
+  - rate-limits
+  - security
+  generated: '2026-11-06'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-marketing-platform.png
+url: https://raw.githubusercontent.com/api-evangelist/google-marketing-platform/refs/heads/main/apis.yml
+created: '2026-03-13'
+modified: '2026-08-13'
+specificationVersion: '0.23'
+type: Index
+access: 3rd-Party
+tags:
+- Analytics
+- Google Marketing Platform
+- Marketing
+- Organization Management
+- Platform Administration
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+common:
+- type: Spectral
+  url: rules/google-marketing-platform-spectral-rules.yml
+- type: Spectral
+  url: rules/google-marketing-platform-rules.yml
+- type: Spectral
+  url: rules/google-marketing-platform-jsonschema-spectral-rules.yml
+- type: JSONLD
+  url: json-ld/openapi-context.jsonld
+- type: JSONLD
+  url: json-ld/google-marketing-platform-context.jsonld
+- type: Vocabulary
+  url: vocabulary/google-marketing-platform-vocabulary.yml
+- type: Deprecation
+  url: https://developers.google.com/terms
+- type: Protobuf
+  url: grpc/google-marketing-platform-resources.proto
+- type: Protobuf
+  url: grpc/google-marketing-platform-marketingplatform-admin.proto
+- type: Hosts
+  url: hosts/google-marketing-platform-hosts.yml
+- type: IntegrationEdges
+  url: integrations/google-marketing-platform-integration-edges.yml
+- type: Sandbox
+  url: https://play.google.com/console/about/
+- type: Website
+  url: https://www.google.com/
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/google-marketing-platform-admin/overview
+- type: AgenticAccess
+  url: agentic-access/google-marketing-platform-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/google-marketing-platform-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/google-marketing-platform-domain-security.yml
+- type: Authentication
+  url: authentication/google-marketing-platform-authentication.yml
+- type: OAuthScopes
+  url: scopes/google-marketing-platform-scopes.yml
+- type: GitHubOrganization
+  url: https://github.com/google-marketing-solutions
+- type: LinkedIn
+  url: https://www.linkedin.com/showcase/googlemarketingplatform
+- type: Portal
+  url: https://marketingplatform.google.com
+- type: GettingStarted
+  url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+- type: Documentation
+  url: https://developers.google.com/marketing-platform
+- type: Authentication
+  url: https://developers.google.com/docs/api/how-tos/authorizing
+- type: Pricing
+  url: https://marketingplatform.google.com/about/
+- type: TermsOfService
+  url: https://developers.google.com/terms
+- type: PrivacyPolicy
+  url: https://policies.google.com/privacy
+- type: StatusPage
+  url: https://status.cloud.google.com/
+- type: JSONLD
+  url: json-ld/json-ld.yml
+- url: https://blog.google/products/marketingplatform/rss/
+  type: Blog
+- type: Packages
+  url: packages/google-marketing-platform-packages.yml
+- type: SDKs
+  url: packages/google-marketing-platform-packages.yml
+- type: WellKnown
+  url: well-known/google-marketing-platform-well-known.yml
+- type: SecurityTxt
+  url: well-known/google-marketing-platform-security.txt
+- type: Security
+  url: https://g.co/vrp
+- type: LLMsTxt
+  url: llms/google-marketing-platform-llms.txt
+- type: Overlay
+  url: overlays/google-marketing-platform-v1alpha-api-overlay.yaml
+- type: Protobuf
+  url: grpc/_index.yml
+- type: Conformance
+  url: conformance/google-marketing-platform-conformance.yml
+- type: ErrorCatalog
+  url: errors/google-marketing-platform-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/google-marketing-platform-lifecycle.yml
+- type: Conventions
+  url: conventions/google-marketing-platform-conventions.yml
+- type: DataModel
+  url: data-model/google-marketing-platform-data-model.yml
+- type: ChangeLog
+  url: changelog/google-marketing-platform-changelog.yml
+- type: ChangeLog
+  url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/changelog
+- type: AgentSkill
+  url: skills/_index.yml
+- type: RateLimits
+  url: rate-limits/google-marketing-platform-rate-limits.yml
+- type: Plans
+  url: plans/google-marketing-platform-plans-pricing.yml
+- type: FinOps
+  url: finops/google-marketing-platform-finops.yml
+- type: APIReference
+  url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+- type: Quickstart
+  url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/quickstart
+- type: SDKs
+  url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/client-libraries
+- type: Login
+  url: https://console.cloud.google.com/apis/library/marketingplatformadmin.googleapis.com
+- type: IssueTracker
+  url: https://issuetracker.google.com/issues/new?component=1603054
+- type: Features
+  data:
+  - name: Organization Management
+    description: List and manage Google Marketing Platform organizations with programmatic access to organization settings.
+  - name: Analytics Account Linking
+    description: Create, list, and delete links between Marketing Platform organizations and Google Analytics accounts.
+  - name: Service Level Configuration
+    description: Set and manage Analytics property service levels including standard and 360 tier assignments.
+  - name: Multi-Organization Access
+    description: Access and manage multiple Marketing Platform organizations from a single authenticated session.
+- type: UseCases
+  data:
+  - name: Enterprise Analytics Setup
+    description: Programmatically link Google Analytics accounts to Marketing Platform organizations for enterprise-scale deployments.
+  - name: Service Tier Management
+    description: Automate the assignment of Analytics 360 service levels to properties across large organizations.
+  - name: Organization Auditing
+    description: List and audit all Marketing Platform organizations and their linked Analytics accounts for governance.
+- type: Integrations
+  data:
+  - name: Google Analytics
+    description: Direct linking and service level management for Google Analytics accounts within Marketing Platform organizations.
+  - name: Google Tag Manager
+    description: Part of the Google Marketing Platform suite for tag management and measurement integration.
+  - name: Display and Video 360
+    description: Integrated advertising platform within Google Marketing Platform for programmatic media buying.
+  - name: Search Ads 360
+    description: Search campaign management platform integrated with Marketing Platform for cross-channel analytics.
+apis:
+- aid: google-marketing-platform:google-marketing-platform-v1alpha-api
+  name: Google Marketing Platform Admin V1alpha API
+  description: The V1alpha API from Google Marketing Platform Admin — 4 operation(s) for v1alpha.
+  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  baseURL: https://marketingplatformadmin.googleapis.com
+  tags:
+  - V1Alpha
+  tags_raw:
+  - V1alpha
+  properties:
+  - type: OpenAPI
+    url: openapi/google-marketing-platform-v1alpha-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  - type: Authentication
+    url: https://developers.google.com/docs/api/how-tos/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  - type: JSONSchema
+    url: json-schema/json-schema.yml
+  - type: JSONLD
+    url: json-ld/json-ld.yml
+  - type: DiscoveryDocument
+    url: openapi/google-marketing-platform-v1alpha-discovery.json
+  - type: Protobuf
+    url: grpc/_index.yml
+  - type: Overlay
+    url: overlays/google-marketing-platform-v1alpha-api-overlay.yaml
+  - type: APIReference
+    url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  - type: RateLimits
+    url: rate-limits/google-marketing-platform-rate-limits.yml
+  - type: Postman
+    url: postman/google-marketing-platform-v1alpha-api.postman_collection.json
+- aid: google-marketing-platform:google-marketing-platform-adminaccessbindings-api
+  name: Google Marketing Platform Admin Admin Access Bindings API
+  description: The AdminAccessBindings API from Google Marketing Platform Admin — 2 operation(s) for adminaccessbindings.
+  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  baseURL: https://marketingplatformadmin.googleapis.com
+  tags:
+  - AdminAccessBindings
+  properties:
+  - type: OpenAPI
+    url: openapi/google-marketing-platform-adminaccessbindings-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-admin-access-binding-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-list-admin-access-bindings-response-schema.json
+- aid: google-marketing-platform:google-marketing-platform-analyticsaccountlinks-api
+  name: Google Marketing Platform Admin Analytics Account Links API
+  description: The AnalyticsAccountLinks API from Google Marketing Platform Admin — 3 operation(s) for analyticsaccountlinks.
+  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  baseURL: https://marketingplatformadmin.googleapis.com
+  tags:
+  - AnalyticsAccountLinks
+  properties:
+  - type: OpenAPI
+    url: openapi/google-marketing-platform-analyticsaccountlinks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-analytics-account-link-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-set-property-service-level-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-list-analytics-account-links-response-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-empty-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-set-property-service-level-response-schema.json
+- aid: google-marketing-platform:google-marketing-platform-members-api
+  name: Google Marketing Platform Admin Members API
+  description: The Members API from Google Marketing Platform Admin — 2 operation(s) for members.
+  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  baseURL: https://marketingplatformadmin.googleapis.com
+  tags:
+  - Members
+  properties:
+  - type: OpenAPI
+    url: openapi/google-marketing-platform-members-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-user-group-member-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-list-user-group-members-response-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-empty-schema.json
+- aid: google-marketing-platform:google-marketing-platform-organizations-api
+  name: Google Marketing Platform Admin Organizations API
+  description: The Organizations API from Google Marketing Platform Admin — 3 operation(s) for organizations.
+  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  baseURL: https://marketingplatformadmin.googleapis.com
+  tags:
+  - Organization
+  tags_raw:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-marketing-platform-organizations-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-organization-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-report-property-usage-response-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-find-sales-partner-managed-clients-response-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-report-property-usage-request-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-find-sales-partner-managed-clients-request-schema.json
+- aid: google-marketing-platform:google-marketing-platform-user-groups-api
+  name: Google Marketing Platform Admin User Groups API
+  description: The User Groups API from Google Marketing Platform Admin — 2 operation(s) for user groups.
+  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
+  baseURL: https://marketingplatformadmin.googleapis.com
+  tags:
+  - User Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/google-marketing-platform-user-groups-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-user-group-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-list-user-groups-response-schema.json
+  - type: JSONSchema
+    url: json-schema/google-marketing-platform-empty-schema.json
+x-enrichment:
+  date: '2026-11-04'
+  status: enriched
+  artifacts_added: 0
+  pass: local-v6
+x-parent: google
+x-relationship: product

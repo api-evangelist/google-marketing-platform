@@ -77,16 +77,73 @@ artifacts:
   heartbeat/2026-11-02.yml:
     method: unknown
     evidence: no authorship recorded
+  heartbeat/2026-11-06.yml:
+    method: unknown
+    evidence: no authorship recorded
+  hosts/google-marketing-platform-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
   integrations/google-marketing-platform-integration-edges.yml:
     method: searched
     evidence: declared in the artifact
+  json-ld/google-marketing-platform-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
   json-ld/json-ld.yml:
     method: unknown
     evidence: no authorship recorded
   json-ld/openapi-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-admin-access-binding-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-analytics-account-link-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-empty-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-find-sales-partner-managed-clients-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-find-sales-partner-managed-clients-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-list-admin-access-bindings-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-list-analytics-account-links-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-list-user-group-members-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-list-user-groups-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-organization-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-report-property-usage-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-report-property-usage-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-set-property-service-level-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-set-property-service-level-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-user-group-member-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/google-marketing-platform-user-group-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/json-schema.yml:
@@ -200,6 +257,9 @@ artifacts:
   lifecycle/google-marketing-platform-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
+  llms/google-marketing-platform-llms-provenance.yml:
+    method: generated
+    evidence: 'derive-llms-provenance.py: generated'
   llms/google-marketing-platform-llms.txt:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -210,6 +270,21 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
+  openapi/google-marketing-platform-adminaccessbindings-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/google-marketing-platform-analyticsaccountlinks-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/google-marketing-platform-members-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/google-marketing-platform-organizations-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  openapi/google-marketing-platform-user-groups-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
   openapi/google-marketing-platform-v1alpha-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
@@ -222,6 +297,9 @@ artifacts:
   packages/google-marketing-platform-packages.yml:
     method: searched
     evidence: declared in the artifact
+  patterns/google-marketing-platform-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/google-marketing-platform-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -232,6 +310,9 @@ artifacts:
     method: searched
     evidence: declared in the artifact
   rules/google-marketing-platform-jsonschema-spectral-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  rules/google-marketing-platform-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/google-marketing-platform-spectral-rules.yml:
@@ -255,12 +336,21 @@ artifacts:
   skills/google-marketing-platform-link-analytics-account.md:
     method: generated
     evidence: declared in the artifact
+  skills/google-marketing-platform-manage-organization-admins.md:
+    method: generated
+    evidence: declared in the artifact
   skills/google-marketing-platform-set-property-service-level.md:
     method: generated
     evidence: declared in the artifact
+  vendors/google-marketing-platform-vendors.yml:
+    method: unknown
+    evidence: no authorship recorded
   vocabulary/google-marketing-platform-vocabulary.yaml:
     method: unknown
     evidence: no authorship recorded
+  vocabulary/google-marketing-platform-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
   well-known/google-marketing-platform-openid-configuration.json:
     method: unknown
     evidence: no authorship recorded
