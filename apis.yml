@@ -23,12 +23,13 @@ accessModel:
   public: false
   label: Requires approval
   confidence: medium
+  probe_state: covered
   source:
   - authentication
   - scopes
   - rate-limits
   - security
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-marketing-platform.png
 url: https://raw.githubusercontent.com/api-evangelist/google-marketing-platform/refs/heads/main/apis.yml
@@ -72,7 +73,7 @@ common:
 - type: Sandbox
   url: https://play.google.com/console/about/
 - type: Website
-  url: https://www.google.com/
+  url: https://marketingplatform.google.com/about/
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/google-marketing-platform-admin/overview
 - type: AgenticAccess
@@ -185,94 +186,21 @@ common:
     description: Integrated advertising platform within Google Marketing Platform for programmatic media buying.
   - name: Search Ads 360
     description: Search campaign management platform integrated with Marketing Platform for cross-channel analytics.
+- type: UsageTerms
+  url: terms/google-marketing-platform-terms-of-service.yml
+- type: DataProcessing
+  url: privacy/google-marketing-platform-privacy-policy.yml
+- type: DeprecationSchedule
+  url: deprecation/google-marketing-platform-deprecation-policy.yml
+- type: Eligibility
+  url: eligibility/google-marketing-platform-eligibility.yml
+- type: DataLicense
+  url: data-license/google-marketing-platform-data-license.yml
 apis:
-- aid: google-marketing-platform:google-marketing-platform-v1alpha-api
-  name: Google Marketing Platform Admin V1alpha API
-  description: The V1alpha API from Google Marketing Platform Admin — 4 operation(s) for v1alpha.
-  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
-  baseURL: https://marketingplatformadmin.googleapis.com
-  tags:
-  - V1Alpha
-  tags_raw:
-  - V1alpha
-  properties:
-  - type: OpenAPI
-    url: openapi/google-marketing-platform-v1alpha-api-openapi.yml
-  - type: Documentation
-    url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
-  - type: Authentication
-    url: https://developers.google.com/docs/api/how-tos/authorizing
-  - type: GettingStarted
-    url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
-  - type: JSONSchema
-    url: json-schema/json-schema.yml
-  - type: JSONLD
-    url: json-ld/json-ld.yml
-  - type: DiscoveryDocument
-    url: openapi/google-marketing-platform-v1alpha-discovery.json
-  - type: Protobuf
-    url: grpc/_index.yml
-  - type: Overlay
-    url: overlays/google-marketing-platform-v1alpha-api-overlay.yaml
-  - type: APIReference
-    url: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
-  - type: RateLimits
-    url: rate-limits/google-marketing-platform-rate-limits.yml
-  - type: Postman
-    url: postman/google-marketing-platform-v1alpha-api.postman_collection.json
-- aid: google-marketing-platform:google-marketing-platform-adminaccessbindings-api
-  name: Google Marketing Platform Admin Admin Access Bindings API
-  description: The AdminAccessBindings API from Google Marketing Platform Admin — 2 operation(s) for adminaccessbindings.
-  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
-  baseURL: https://marketingplatformadmin.googleapis.com
-  tags:
-  - AdminAccessBindings
-  properties:
-  - type: OpenAPI
-    url: openapi/google-marketing-platform-adminaccessbindings-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-admin-access-binding-schema.json
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-list-admin-access-bindings-response-schema.json
-- aid: google-marketing-platform:google-marketing-platform-analyticsaccountlinks-api
-  name: Google Marketing Platform Admin Analytics Account Links API
-  description: The AnalyticsAccountLinks API from Google Marketing Platform Admin — 3 operation(s) for analyticsaccountlinks.
-  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
-  baseURL: https://marketingplatformadmin.googleapis.com
-  tags:
-  - AnalyticsAccountLinks
-  properties:
-  - type: OpenAPI
-    url: openapi/google-marketing-platform-analyticsaccountlinks-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-analytics-account-link-schema.json
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-set-property-service-level-request-schema.json
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-list-analytics-account-links-response-schema.json
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-empty-schema.json
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-set-property-service-level-response-schema.json
-- aid: google-marketing-platform:google-marketing-platform-members-api
-  name: Google Marketing Platform Admin Members API
-  description: The Members API from Google Marketing Platform Admin — 2 operation(s) for members.
-  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
-  baseURL: https://marketingplatformadmin.googleapis.com
-  tags:
-  - Members
-  properties:
-  - type: OpenAPI
-    url: openapi/google-marketing-platform-members-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-user-group-member-schema.json
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-list-user-group-members-response-schema.json
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-empty-schema.json
 - aid: google-marketing-platform:google-marketing-platform-organizations-api
   name: Google Marketing Platform Admin Organizations API
-  description: The Organizations API from Google Marketing Platform Admin — 3 operation(s) for organizations.
+  description: >-
+    The Organizations API from Google Marketing Platform Admin — 3 operation(s) for organizations.
   humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
   baseURL: https://marketingplatformadmin.googleapis.com
   tags:
@@ -287,31 +215,24 @@ apis:
   - type: JSONSchema
     url: json-schema/google-marketing-platform-report-property-usage-response-schema.json
   - type: JSONSchema
-    url: json-schema/google-marketing-platform-find-sales-partner-managed-clients-response-schema.json
+    url: >-
+      json-schema/google-marketing-platform-find-sales-partner-managed-clients-response-schema.json
   - type: JSONSchema
     url: json-schema/google-marketing-platform-report-property-usage-request-schema.json
   - type: JSONSchema
-    url: json-schema/google-marketing-platform-find-sales-partner-managed-clients-request-schema.json
-- aid: google-marketing-platform:google-marketing-platform-user-groups-api
-  name: Google Marketing Platform Admin User Groups API
-  description: The User Groups API from Google Marketing Platform Admin — 2 operation(s) for user groups.
-  humanURL: https://developers.google.com/marketing-platform/devguides/api/admin/v1/rest
-  baseURL: https://marketingplatformadmin.googleapis.com
-  tags:
-  - User Groups
-  properties:
-  - type: OpenAPI
-    url: openapi/google-marketing-platform-user-groups-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-user-group-schema.json
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-list-user-groups-response-schema.json
-  - type: JSONSchema
-    url: json-schema/google-marketing-platform-empty-schema.json
+    url: >-
+      json-schema/google-marketing-platform-find-sales-partner-managed-clients-request-schema.json
 x-enrichment:
-  date: '2026-11-04'
+  date: '2026-11-12'
   status: enriched
   artifacts_added: 0
   pass: local-v6
 x-parent: google
 x-relationship: product
+x-coverage:
+  state: covered
+  reason: vendor-discovery-document
+  detail: Contracts generated from Google's published Discovery document (marketingplatformadmin v1alpha).
+  evidence:
+  - url: https://marketingplatformadmin.googleapis.com/$discovery/rest?version=v1alpha
+    status: 200

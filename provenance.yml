@@ -8,15 +8,21 @@ artifacts:
   authentication/google-marketing-platform-authentication.yml:
     method: searched
     evidence: declared in the artifact
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
   changelog/google-marketing-platform-changelog.yml:
     method: searched
     evidence: declared in the artifact
   collections/google-marketing-platform-v1alpha-api.opencollection.json:
-    method: derived
-    evidence: openapi/google-marketing-platform-v1alpha-api
+    method: unknown
+    evidence: no authorship recorded
   collections/google-marketing-platform-v1alpha-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-marketing-platform-v1alpha-api
+    method: unknown
+    evidence: no authorship recorded
   collections/openapi.opencollection.json:
     method: unknown
     evidence: no authorship recorded
@@ -29,8 +35,21 @@ artifacts:
   conventions/google-marketing-platform-conventions.yml:
     method: searched
     evidence: declared in the artifact
+  data-license/google-marketing-platform-data-license.yml:
+    method: harvested
+    evidence: declared in the artifact
   data-model/google-marketing-platform-data-model.yml:
     method: derived
+    evidence: declared in the artifact
+  deprecation/google-marketing-platform-deprecation-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
+  discovery/marketingplatformadmin-v1alpha.json:
+    method: harvested
+    evidence: byte-identical to https://marketingplatformadmin.googleapis.com/$discovery/rest?version=v1alpha
+      (sha256 4b065bf51d24, fetched 2026-11-12T01:34:50+00:00)
+  eligibility/google-marketing-platform-eligibility.yml:
+    method: harvested
     evidence: declared in the artifact
   errors/google-marketing-platform-problem-types.yml:
     method: searched
@@ -78,6 +97,9 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   heartbeat/2026-11-06.yml:
+    method: unknown
+    evidence: no authorship recorded
+  heartbeat/2026-11-13.yml:
     method: unknown
     evidence: no authorship recorded
   hosts/google-marketing-platform-hosts.yml:
@@ -188,7 +210,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -254,6 +276,9 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/google-marketing-platform-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
@@ -266,29 +291,7 @@ artifacts:
   mcp/google-marketing-platform-mcp.yml:
     method: derived
     evidence: declared in the artifact
-  openapi/_original/openapi.yml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/google-marketing-platform-adminaccessbindings-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/google-marketing-platform-analyticsaccountlinks-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/google-marketing-platform-members-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
   openapi/google-marketing-platform-organizations-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/google-marketing-platform-user-groups-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
-  openapi/google-marketing-platform-v1alpha-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/google-marketing-platform-v1alpha-discovery.json:
     method: unknown
     evidence: no authorship recorded
   overlays/google-marketing-platform-v1alpha-api-overlay.yaml:
@@ -304,8 +307,11 @@ artifacts:
     method: searched
     evidence: declared in the artifact
   postman/google-marketing-platform-v1alpha-api.postman_collection.json:
-    method: derived
-    evidence: openapi/google-marketing-platform-v1alpha-api
+    method: unknown
+    evidence: no authorship recorded
+  privacy/google-marketing-platform-privacy-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
   rate-limits/google-marketing-platform-rate-limits.yml:
     method: searched
     evidence: declared in the artifact
@@ -341,6 +347,9 @@ artifacts:
     evidence: declared in the artifact
   skills/google-marketing-platform-set-property-service-level.md:
     method: generated
+    evidence: declared in the artifact
+  terms/google-marketing-platform-terms-of-service.yml:
+    method: harvested
     evidence: declared in the artifact
   vendors/google-marketing-platform-vendors.yml:
     method: unknown
