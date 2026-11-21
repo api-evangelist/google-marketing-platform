@@ -29,7 +29,7 @@ accessModel:
   - scopes
   - rate-limits
   - security
-  generated: '2026-11-13'
+  generated: '2026-11-20'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-marketing-platform.png
 url: https://raw.githubusercontent.com/api-evangelist/google-marketing-platform/refs/heads/main/apis.yml
